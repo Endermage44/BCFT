@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\users;
+use Illuminate\Support\Facades\DB;
 
 class registerControllerAPI extends Controller
 {
@@ -20,20 +21,40 @@ class registerControllerAPI extends Controller
      */
     public function store(Request $request)
     {
+        // $user = $request->all();
         // Validate the request data
-        // $request->validate([
-        //     'role' => 'required',
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'email' => 'required|email|unique:users',
-        //     'phone' => 'required',
-        //     'password' => 'required',
-        //     'dob' => 'required'
-        //     ]);
+        $user = $request->validate([
+            'role' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'emailID' => 'required|email|unique:users',
+            'phoneNumber' => 'required',
+            'userPass' => 'required',
+            'DOB' => 'required'
+            ]);
             
-            $user = $request->all();
-            users::create($user);
-            return $user;
+            
+            $dob = new \DateTime($user['DOB']);
+            $currentDate = new \DateTime();
+
+            $age = $dob->diff($currentDate)->y;
+
+            $roleName = $user['role'];
+            $role = DB::table('roles')->where('roleName', $roleName)->first();
+
+            $roleID = $role->roleID;
+
+            users::create([
+                'roleID'=> $roleID,
+                'firstName'=> $user['firstName'],
+                'lastName'=> $user['lastName'],
+                'emailID'=> $user['emailID'],
+                'phoneNumber'=> $user['phoneNumber'],
+                'userPass'=> $user['userPass'],
+                'DOB' => $user['DOB'],
+                'age'=> $age
+            ]);
+            return $roleID;
     }
 
     /**
