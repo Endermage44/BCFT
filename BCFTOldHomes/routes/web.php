@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Register');
 });
+
+//Additional Patient information page
+Route::get('/additional-info', function () {
+    return view('Additional_Info_Patient');
+})->name('additional.info.page');
