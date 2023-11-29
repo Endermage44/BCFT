@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Register');
+    return view('home');
+});
+
+Route::post('/', [homeController::class,'login']);
+
+Route::get('/register', function() {
+    return view('registration');
 });
 
 //Additional Patient information page
