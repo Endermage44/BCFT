@@ -20,3 +20,7 @@ Route::get('/login', function () {
 Route::get('/register', function() {
     return view('registration');
 });
+
+Route::get('/doctorLanding', function() {
+    return view('doctorLanding');
+});
