@@ -34,7 +34,4 @@ Route::get('/addPatInfo', function () {
     return view('additionalInfoPatient');
 });
 
-//Additional Patient information page
-Route::get('/addPatInfo', function () {
-    return view('additionalInfoPatient');
-});
+
