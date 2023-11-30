@@ -20,9 +20,18 @@ Route::get('/', function () {
 
 Route::post('/', [homeController::class,'login']);
 
-//Registration page 
+//Registration page
 Route::get('/register', function() {
     return view('registration');
+});
+
+Route::get('/doctorLanding', function() {
+    return view('doctorLanding');
+});
+
+//Additional Patient information page
+Route::get('/addPatInfo', function () {
+    return view('additionalInfoPatient');
 });
 
 //Additional Patient information page

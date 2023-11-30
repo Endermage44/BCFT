@@ -5,6 +5,17 @@
     <body>
         <div class="header">
 
+
+<nav>
+    <h2>BCFT Retirement Home</h2>
+        <ul>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+        </ul>
+</nav>
+
+
             <!--Content before waves-->
             <div class="inner-header flex">
             <!--Just the logo.. Don't mind this-->
@@ -20,23 +31,84 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Login or Signup</h3>
-                <form action="" method="POST">
-                    @csrf
-                    <input class = "userInput" type ="text" name="emailID" placeholder="Email"/><br/>
-                    <input class = "passInput" type="password" name="userPass" placeholder="Password"/><br/>
-                        <button type="submit">Login</button>
-                </form>
-                <form action="{{url('/register')}}" method="">
-                    @csrf
-                    <p>Not a member?</p>
-                    <button type="submit">Register Now</button>
-                </form>
-                <form action="" method="">
-                    @csrf
-                    <a href="submit">Family Member?</a>
-                </form>
+                <h3>Doctor's Home</h3>
+                <div class="searchBar">
+                    <form class="p-3">
+                        <div class="col-12 col-md-8 container">
+                            <input id="search-bar">
+                        </div>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                <p>Past Appointments for John Smith</p>
+            <div id="appointmentTables">
+               <div id="pastAppointments">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Appt. Date</th>
+                                <th>Comment</th>
+                                <th>Morning Med</th>
+                                <th>Afternoon Med</th>
+                                <th>Night Med</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>10/27/23</td>
+                                <td>Recovering well; John has been consistently taking meds</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr class="active-row">
+                                <td>John Smith</td>
+                                <td>11/30/23</td>
+                                <td>John is entering last stage of treatment for bronchytis; plan to continue meds until further notice</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>12/28/23</td>
+                                <td>Treatment is complete</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="upcomingAppointments">
+                    <p>Upcoming appointments for John Smith</p>
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Appt. Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>10/27/23</td>
+                            </tr>
+                            <tr class="active-row">
+                                <td>John Smith</td>
+                                <td>11/30/23</td>
+                            </tr>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>12/28/23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        </div>
             <!--Waves Container-->
             <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -79,11 +151,116 @@ body {
   margin:0;
 }
 
+nav {
+  display: flex; /* 1 */
+  justify-content: space-between; /* 2 */
+  padding:2px ; /* 3 */
+  background: rgb(255, 255, 255, .8);
+}
+
+nav ul {
+  display: flex; /* 5 */
+  list-style: none; /* 6 */
+  margin-right: 10px;
+}
+
+nav li {
+  padding-left: 3rem; /* 7! */
+
+}
+
+nav li, a, ul {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: black;
+}
+
+nav a {
+    color: black;
+    padding-right: 5px;
+}
+
+nav h2 {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: black;
+  margin-left: 10px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    font-weight: bold;
+    color: white;
+    min-width: 400px;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: rgb(255, 255, 255, .8);
+    color: black;
+    text-align: left;
+
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: rgb(255, 255, 255, .8);
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid white;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
+
+#pastAppointments {
+    margin-bottom: 50px;
+}
+
+#upcomingAppointments {
+    margin-bottom: 50px;
+}
+
+#search-bar {
+    height: 35px;
+    border-radius: 48px;
+    background: rgb(255, 255, 255, .8);
+    width: 800px;
+    padding-right: 40px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
 h1 {
   font-family: 'Lato', sans-serif;
   font-weight:300;
   letter-spacing: 2px;
   font-size:48px;
+
+
+
 }
 h3 {
   font-family: 'Lato', sans-serif;
@@ -111,7 +288,7 @@ button {
     font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   font-size:14px;
-  color: #333333;
+  color: rgb(255, 255, 255, .8);
 }
 
 .header {
