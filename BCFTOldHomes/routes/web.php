@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('home');
 });
 
+Route::post('/', [homeController::class,'login']);
+
+//Registration page
 Route::get('/register', function() {
     return view('registration');
 });
 
 Route::get('/doctorLanding', function() {
     return view('doctorLanding');
+});
+
+//Additional Patient information page
+Route::get('/addPatInfo', function () {
+    return view('additionalInfoPatient');
+});
+
+//Additional Patient information page
+Route::get('/addPatInfo', function () {
+    return view('additionalInfoPatient');
 });
