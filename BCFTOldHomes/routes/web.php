@@ -20,11 +20,12 @@ Route::get('/', function () {
 
 Route::post('/', [homeController::class,'login']);
 
+//Registration page 
 Route::get('/register', function() {
     return view('registration');
 });
 
 //Additional Patient information page
-Route::get('/additional-info', function () {
-    return view('Additional_Info_Patient');
-})->name('additional.info.page');
+Route::get('/addPatInfo', function () {
+    return view('additionalInfoPatient');
+});
