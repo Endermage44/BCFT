@@ -14,17 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+//Login Page
 Route::post('/', [homeController::class,'login']);
 
 //Registration page
-Route::get('/register', function() {
+Route::get('/', function() {
     return view('registration');
 });
 
+//Doctor's Home
 Route::get('/doctorLanding', function() {
     return view('doctorLanding');
 });
@@ -34,4 +32,7 @@ Route::get('/addPatInfo', function () {
     return view('additionalInfoPatient');
 });
 
-
+//Admin Dashboard
+Route ::get('/adminDash', function() {
+    return view('adminLanding');
+});
