@@ -31,70 +31,93 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Additional Patient info page</h3>
+                <h3>Patients Home</h3>
             
-
-                <!-- Form for updating patient information -->
-            <form action="{{ url('/api/Patients')}}" method="get">
-                @csrf
+                <form id="patientForm">
+                    <label for="patientID">Patient ID:</label>
+                    <input type="text" id="patientID" placeholder="Enter Patient ID" disabled>
             
-                <label for="patientId">Patient ID:</label>
-                <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
+                    <label for="patientName">Patient Name:</label>
+                    <input type="text" id="patientName" placeholder="Patient Name" disabled>
             
-                <!-- Display fields (read-only) for patient group, admission date, and email ID -->
-                <label for="patientGroup">Patient Group:</label>
-                <input type="text" id="patientGroup" name="patientGroup" readonly>
+                    <label for="doctorName">Doctor's Name:</label>
+                    <input type="text" id="doctorName" placeholder="Doctor's Name">
             
-                <label for="admissionDate">Admission Date:</label>
-                <input type="text" id="admissionDate" name="admissionDate" readonly>
+                    <label for="doctorAppointmentDate">Doctor's Appointment Date:</label>
+                    <input type="date" id="doctorAppointmentDate" placeholder="Select Date">
             
-                <label for="emailID">Email ID:</label>
-                <input type="text" id="emailID" name="emailID" readonly>
+                    <label for="caregiverName">Caregiver's Name:</label>
+                    <input type="text" id="caregiverName" placeholder="Caregiver's Name">
             
-                <!-- Add any other additional fields for updating information -->
+                    <label for="morningMedicine">Morning Medicine:</label>
+                    <select id="morningMedicine">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
             
-                <button type="submit">OK</button>
-                <button type="button" onclick="cancelForm()">Cancel</button>
-            </form>
+                    <label for="afternoonMedicine">Afternoon Medicine:</label>
+                    <select id="afternoonMedicine">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
             
-            <script>
-               function fetchPatientInfo() {
-                var patientId = document.getElementById('patientId').value;
+                    <label for="nightMedicine">Night Medicine:</label>
+                    <select id="nightMedicine">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
             
-                // Make an AJAX request to fetch patient details based on the entered ID
-                fetch(`/api/Patients/${patientId}`, {
-                    method: 'GET',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Populate the fields with fetched data
-                    document.getElementById('patientGroup').value = data.patientGroup;
-                    document.getElementById('admissionDate').value = data.admissionDate;
-                    document.getElementById('emailID').value = data.emailID;
-                    // Populate other fields as needed
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Optionally, handle errors here
-                });
-            }
+                    <label for="breakfast">Breakfast:</label>
+                    <select id="breakfast">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
             
-                function cancelForm() {
-                    // Add any additional logic you may need before canceling
-                    alert('Form canceled'); // Optional: Show an alert or perform other actions
+                    <label for="lunch">Lunch:</label>
+                    <select id="lunch">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
             
-                    // Optionally, you can reset the form fields
-                    document.getElementById('patientId').value = '';
-                    document.getElementById('patientGroup').value = '';
-                    document.getElementById('admissionDate').value = '';
-                    document.getElementById('emailID').value = '';
-                    // Reset other fields as needed
-                }
-            </script>
+                    <label for="dinner">Dinner:</label>
+                    <select id="dinner">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+            
+                    <!-- Add other input fields as needed -->
+            
+                    <button type="button" onclick="loginUser('patient123')">Login</button>
+                </form>
             </div>
+
+            {{-- have not completely verified the script, see this more as an base --}}
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    function loginUser(patientID) {
+                        // Simulate AJAX request to fetch patient details
+                        const patientDetails = {
+                            id: patientID,
+                            name: 'John Doe', 
+                            doctorName: 'Dr. Smith', 
+                            doctorAppointmentDate: '2023-12-01', 
+                            caregiverName: 'Jane Doe', 
+                        };
+            
+                        // Populate form fields with patient details
+                        document.getElementById('patientID').value = patientDetails.id;
+                        document.getElementById('patientName').value = patientDetails.name;
+                        document.getElementById('doctorName').value = patientDetails.doctorName;
+                        document.getElementById('doctorAppointmentDate').value = patientDetails.doctorAppointmentDate;
+                        document.getElementById('caregiverName').value = patientDetails.caregiverName;
+                
+                    }
+                });
+            </script>
+
+
+
+
             <!--Waves Container-->
             <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -404,7 +427,6 @@ input::placeholder {
 .box button {
     display: inline-block;
     outline: 0;
-    width:25%;
     border: 0;
     cursor: pointer;
     transition: box-shadow 0.15s ease,transform 0.15s ease;

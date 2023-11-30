@@ -22,7 +22,7 @@ Route::get('/', function() {
     return view('registration');
 });
 
-//Doctor's Home
+//Doctors Landing Page
 Route::get('/doctorLanding', function() {
     return view('doctorLanding');
 });
@@ -35,4 +35,24 @@ Route::get('/addPatInfo', function () {
 //Admin Dashboard
 Route ::get('/adminDash', function() {
     return view('adminLanding');
+});
+
+//Patients Home page
+Route::get('/pathomePage',function(){
+    return view('patientHome');
+});
+
+//Patients DashBoard 
+Route::get('/patDashboard',function(){
+    return view('patientsDashboard');
+});
+
+//Caregivers DashBoard
+Route::get('/careDashboard',function(){
+    return view('caregiversDashboard');
+});
+
+//Patients Page
+Route::get('/patPage', function(){
+    return view('patientsPage');
 });
