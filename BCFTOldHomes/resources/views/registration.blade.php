@@ -95,7 +95,7 @@
             </div>
             <!--Content ends-->
 
-            @if(isset($error))
+            
             <script>
                 document.getElementById('role').addEventListener('change', function () {
                     var patientFields = document.getElementById('patientFields');
@@ -110,9 +110,12 @@
                     var element = document.getElementById("register");
                     element.reset()
                 }
-
-                alert("{{ $error }}")
             </script>
+            
+            @if(isset($error)) --}}
+            <script>
+              alert("{{ $error }}")
+              </script>
             @endif
 
 
