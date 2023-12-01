@@ -31,69 +31,28 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Additional Patient info page</h3>
+                <h3>Patient DashBoard</h3>
+                <div class='box'>
+                    <!-- Payments -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Payments</button>
+                    </form>
             
+                    <!--Patient Additiional Info -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Patient Additional Information</button>
+                    </form>
 
-                <!-- Form for updating patient information -->
-            <form action="{{ url('/api/Patients')}}" method="get">
-                @csrf
-            
-                <label for="patientId">Patient ID:</label>
-                <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
-            
-                <!-- Display fields (read-only) for patient group, admission date, and email ID -->
-                <label for="patientGroup">Patient Group:</label>
-                <input type="text" id="patientGroup" name="patientGroup" readonly>
-            
-                <label for="admissionDate">Admission Date:</label>
-                <input type="text" id="admissionDate" name="admissionDate" readonly>
-            
-                <label for="emailID">Email ID:</label>
-                <input type="text" id="emailID" name="emailID" readonly>
-            
-                <!-- Add any other additional fields for updating information -->
-            
-                <button type="submit">OK</button>
-                <button type="button" onclick="cancelForm()">Cancel</button>
-            </form>
-            
-            <script>
-               function fetchPatientInfo() {
-                var patientId = document.getElementById('patientId').value;
-            
-                // Make an AJAX request to fetch patient details based on the entered ID
-                fetch(`/api/Patients/${patientId}`, {
-                    method: 'GET',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Populate the fields with fetched data
-                    document.getElementById('patientGroup').value = data.patientGroup;
-                    document.getElementById('admissionDate').value = data.admissionDate;
-                    document.getElementById('emailID').value = data.emailID;
-                    // Populate other fields as needed
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Optionally, handle errors here
-                });
-            }
-            
-                function cancelForm() {
-                    // Add any additional logic you may need before canceling
-                    alert('Form canceled'); // Optional: Show an alert or perform other actions
-            
-                    // Optionally, you can reset the form fields
-                    document.getElementById('patientId').value = '';
-                    document.getElementById('patientGroup').value = '';
-                    document.getElementById('admissionDate').value = '';
-                    document.getElementById('emailID').value = '';
-                    // Reset other fields as needed
-                }
-            </script>
+                    <!-- Doctor's Appts -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Doctor Appointments</button>
+                    </form>
+                    
+                    <!-- Patient Info -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Patient Information</button>
+                    </form>
+                </div>
             </div>
             <!--Waves Container-->
             <div>
