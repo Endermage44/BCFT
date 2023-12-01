@@ -33,24 +33,14 @@
             <div class="box">
                 <h3>Patient DashBoard</h3>
                 <div class='box'>
-                    <!-- Payments -->
+                    <!-- Patients Home -->
                     <form action={{ url('/') }}>
-                        <button type='submit'>Payments</button>
+                        <button type='submit'>Daily Checklists</button>
                     </form>
             
-                    <!--Patient Additiional Info -->
+                    <!--Rosters (View Only) -->
                     <form action={{ url('/') }}>
-                        <button type='submit'>Patient Additional Information</button>
-                    </form>
-
-                    <!-- Doctor's Appts -->
-                    <form action={{ url('/') }}>
-                        <button type='submit'>Doctor Appointments</button>
-                    </form>
-                    
-                    <!-- Patient Info -->
-                    <form action={{ url('/') }}>
-                        <button type='submit'>Patient Information</button>
+                        <button type='submit'>Rosters</button>
                     </form>
                 </div>
             </div>

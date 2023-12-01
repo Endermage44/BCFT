@@ -33,19 +33,9 @@
             <div class="box">
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
-                    <!-- Payments -->
-                    <form action={{ url('/') }}>
-                        <button type='submit'>Payments</button>
-                    </form>
-
                     <!--Patient Additiional Info -->
                     <form action={{ url('/') }}>
                         <button type='submit'>Patient Additional Information</button>
-                    </form>
-
-                    <!-- Roles -->
-                    <form action={{ url('/') }}>
-                        <button type='submit'>Roles</button>
                     </form>
 
                     <!-- Doctor's Appts -->
@@ -53,12 +43,12 @@
                         <button type='submit'>Doctor Appointments</button>
                     </form>
 
-                    <!-- Employees -->
+                    <!-- Employees (View Only) -->
                     <form action={{ url('/') }}>
                         <button type='submit'>Employee List</button>
                     </form>
 
-                    <!-- Rosters -->
+                    <!-- Rosters (View/Edit) -->
                     <form action={{ url('/') }}>
                         <button type='submit'>Add/View Rosters</button>
                     </form>

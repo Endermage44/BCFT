@@ -31,84 +31,54 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Doctor's Home</h3>
-                <div class="searchBar">
-                    <form class="p-3">
-                        <div class="col-12 col-md-8 container">
-                            <input id="search-bar">
-                        </div>
-                        <button type="submit">Search</button>
+                <h3>Welcome Doctor Smith</h3>
+                <div class='box'>
+                    <!-- Payments -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Payments</button>
+                    </form>
+
+                    <!--Patient Additiional Info -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Patient Additional Information</button>
+                    </form>
+
+                    <!-- Roles -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Roles</button>
+                    </form>
+
+                    <!-- Doctor's Appts -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Doctor Appointments</button>
+                    </form>
+
+                    <!-- Employees -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Employee List</button>
+                    </form>
+
+                    <!-- Rosters (View/Edit) -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Add/View Rosters</button>
+                    </form>
+
+                    <!-- Patient Info -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Patient Information</button>
+                    </form>
+
+                    <!-- Admin Report -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Admin Report</button>
+                    </form>
+
+                    <!-- Registration Approval -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Registration Approvals</button>
                     </form>
                 </div>
-                <p>Past Appointments for John Smith</p>
-            <div id="appointmentTables">
-               <div id="pastAppointments">
-                    <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Appt. Date</th>
-                                <th>Comment</th>
-                                <th>Morning Med</th>
-                                <th>Afternoon Med</th>
-                                <th>Night Med</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Recovering well; John has been consistently taking meds</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>11/30/23</td>
-                                <td>John is entering last stage of treatment for bronchytis; plan to continue meds until further notice</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>12/28/23</td>
-                                <td>Treatment is complete</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="upcomingAppointments">
-                    <p>Upcoming appointments for John Smith</p>
-                    <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Appt. Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>11/30/23</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>12/28/23</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-        </div>
             <!--Waves Container-->
             <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -420,6 +390,7 @@ input::placeholder {
     outline: 0;
     border: 0;
     cursor: pointer;
+    width: 20%;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
     will-change: box-shadow,transform;
     background: #FCFCFD;
