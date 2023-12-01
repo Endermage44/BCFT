@@ -37,7 +37,7 @@ Route::get('/addPatInfo', function () {
 
 //Admin Dashboard
 Route ::get('/adminDash', function() {
-    return view('adminLanding');
+    return view('adminDash');
 });
 
 //Patients Home page
@@ -58,4 +58,9 @@ Route::get('/careDashboard',function(){
 //Additional Patients Info Page
 Route::get('/patPage', function(){
     return view('patientsPage');
+});
+
+//Doctor Dash
+Route::get('/docDash', function(){
+    return view('doctorDash');
 });

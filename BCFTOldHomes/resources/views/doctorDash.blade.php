@@ -31,22 +31,22 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Caregivers DashBoard</h3>
+                <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
-                    <!-- Payments -->
+                    <!-- Roster (View Only) -->
                     <form action={{ url('/') }}>
-                        <button type='submit'>Patients</button>
-                    </form>
-            
-                    <!--Patient Additiional Info -->
-                    <form action={{ url('/') }}>
-                        <button type='submit'>Caregiver's Home</button>
+                        <button type='submit'>Rosters</button>
                     </form>
 
-                    <!--Roster (View Only) -->
+                    <!--Patient of Doctor -->
                     <form action={{ url('/') }}>
-                      <button type='submit'>Rosters</button>
-                  </form>
+                        <button type='submit'>Patient of Doctor</button>
+                    </form>
+
+                    <!-- Doctor's Home -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Doctor's Home</button>
+                    </form>
                 </div>
             </div>
             <!--Waves Container-->
@@ -358,9 +358,9 @@ input::placeholder {
 .box button {
     display: inline-block;
     outline: 0;
-    width:25%;
     border: 0;
     cursor: pointer;
+    width: 20%;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
     will-change: box-shadow,transform;
     background: #FCFCFD;
