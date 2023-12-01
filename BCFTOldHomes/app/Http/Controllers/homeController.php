@@ -29,25 +29,7 @@ class homeController extends Controller
 
         // THIS IS TEMPORARY UNTIL WE HAVE THE OTHER PAGES, This just lets me know that the validation is working
         // return view('/registration');
-        if ($existingUser->roleID == 1){
-            return view('/adminLanding');
-        }
-
-        if ($existingUser->roleID == 2){
-            return view('/adminLanding');
-        }
-
-        if ($existingUser->roleID == 3){
-            return view('/doctorLanding');
-        }
-
-        if ($existingUser->roleID == 4){
-            return view('/caregiversDashboard');
-        }
-
-        if ($existingUser->roleID == 5){
-            return view('/patientsDashboard');
-        }
+        c
 
         
 
