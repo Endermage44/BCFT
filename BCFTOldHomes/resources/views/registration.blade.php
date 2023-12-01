@@ -41,7 +41,7 @@
                     <input placeholder= "Last" type="text" name="lastName" id="last_name" required>
 
                     <label for="email">Email:</label>
-                    <input placeholder= "example@email.com" id="email" name="emailID" id="email" required>
+                    <input placeholder= "example@email.com" id="emailID" name="emailID" id="emailID" required>
 
                     <label for="phone">Phone:</label>
                     <input placeholder= "(###)-###-####" type="tel" name="phoneNumber" id="phone" required>
@@ -95,6 +95,7 @@
             </div>
             <!--Content ends-->
 
+            @if(isset($error))
             <script>
                 document.getElementById('role').addEventListener('change', function () {
                     var patientFields = document.getElementById('patientFields');
@@ -109,7 +110,10 @@
                     var element = document.getElementById("register");
                     element.reset()
                 }
+
+                alert("{{ $error }}")
             </script>
+            @endif
 
 
     </body>

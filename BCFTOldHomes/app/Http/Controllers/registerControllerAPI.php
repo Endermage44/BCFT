@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\JsonResponse;
 
 class registerControllerAPI extends Controller
 {
@@ -21,18 +22,23 @@ class registerControllerAPI extends Controller
      */
     public function store(Request $request)
     {
-        // $user = $request->all();
+
         // Validate the request data
         $user = $request->validate([
             'role' => 'required',
             'firstName' => 'required',
             'lastName' => 'required',
-            'emailID' => 'required|email|unique:users',
+            'emailID' => 'required|email',
             'phoneNumber' => 'required',
             'userPass' => 'required',
             'DOB' => 'required'
             ]);
-            
+
+            $existingUser = DB::table('users')->where('emailID', $user['emailID'])->first();
+
+            if ($existingUser !== null && $user['emailID'] == $existingUser->emailID) {
+                return view('/registration', ['error' => 'User Already Exists']);
+            }
             
             $dob = new \DateTime($user['DOB']);
             $currentDate = new \DateTime();
@@ -54,7 +60,25 @@ class registerControllerAPI extends Controller
                 'DOB' => $user['DOB'],
                 'age'=> $age
             ]);
-            return $roleID;
+            if ($roleID == 1){
+                return view('/adminLanding');
+            }
+    
+            if ($roleID == 2){
+                return view('/adminLanding');
+            }
+    
+            if ($roleID == 3){
+                return view('/doctorLanding');
+            }
+    
+            if ($roleID == 4){
+                return view('/caregiversDashboard');
+            }
+    
+            if ($roleID == 5){
+                return view('/patientsDashboard');
+            }
     }
 
     /**
