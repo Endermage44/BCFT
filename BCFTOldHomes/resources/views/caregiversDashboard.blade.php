@@ -42,7 +42,11 @@
                     <form action={{ url('/') }}>
                         <button type='submit'>Caregiver's Home</button>
                     </form>
-          
+
+                    <!--Roster (View Only) -->
+                    <form action={{ url('/') }}>
+                      <button type='submit'>Rosters</button>
+                  </form>
                 </div>
             </div>
             <!--Waves Container-->

@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 //Login Page
 Route::post('/', [homeController::class,'login']);
+Route::get('/', function(){
+    return view('home');
+});
 
 //Registration page
-Route::get('/', function() {
+Route::get('/register', function() {
     return view('registration');
 });
 
@@ -34,7 +37,7 @@ Route::get('/addPatInfo', function () {
 
 //Admin Dashboard
 Route ::get('/adminDash', function() {
-    return view('adminLanding');
+    return view('adminDash');
 });
 
 //Patients Home page
@@ -52,7 +55,12 @@ Route::get('/careDashboard',function(){
     return view('caregiversDashboard');
 });
 
-//Patients Page
+//Additional Patients Info Page
 Route::get('/patPage', function(){
     return view('patientsPage');
+});
+
+//Doctor Dash
+Route::get('/docDash', function(){
+    return view('doctorDash');
 });

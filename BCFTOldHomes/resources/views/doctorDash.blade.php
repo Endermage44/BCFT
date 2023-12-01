@@ -31,16 +31,21 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Patient DashBoard</h3>
+                <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
-                    <!-- Patients Home -->
-                    <form action={{ url('/') }}>
-                        <button type='submit'>Daily Checklists</button>
-                    </form>
-            
-                    <!--Rosters (View Only) -->
+                    <!-- Roster (View Only) -->
                     <form action={{ url('/') }}>
                         <button type='submit'>Rosters</button>
+                    </form>
+
+                    <!--Patient of Doctor -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Patient of Doctor</button>
+                    </form>
+
+                    <!-- Doctor's Home -->
+                    <form action={{ url('/') }}>
+                        <button type='submit'>Doctor's Home</button>
                     </form>
                 </div>
             </div>
@@ -124,7 +129,48 @@ nav h2 {
   margin-left: 10px;
 }
 
+.styled-table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    font-weight: bold;
+    color: white;
+    min-width: 400px;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 
+.styled-table thead tr {
+    background-color: rgb(255, 255, 255, .8);
+    color: black;
+    text-align: left;
+
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: rgb(255, 255, 255, .8);
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid white;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
 
 #pastAppointments {
     margin-bottom: 50px;
@@ -312,9 +358,9 @@ input::placeholder {
 .box button {
     display: inline-block;
     outline: 0;
-    width:25%;
     border: 0;
     cursor: pointer;
+    width: 20%;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
     will-change: box-shadow,transform;
     background: #FCFCFD;
