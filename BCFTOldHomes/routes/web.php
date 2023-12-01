@@ -26,8 +26,8 @@ Route::get('/register', function() {
 });
 
 //Doctors Landing Page
-Route::get('/doctorLanding', function() {
-    return view('doctorLanding');
+Route::get('/doctorHome', function() {
+    return view('doctorsHome');
 });
 
 //Additional Patient information page
@@ -45,7 +45,7 @@ Route::get('/pathomePage',function(){
     return view('patientHome');
 });
 
-//Patients DashBoard 
+//Patients DashBoard
 Route::get('/patDashboard',function(){
     return view('patientsDashboard');
 });
@@ -59,6 +59,7 @@ Route::get('/careDashboard',function(){
 Route::get('/patPage', function(){
     return view('patientsPage');
 });
+
 
 //Doctor Dash
 Route::get('/docDash', function(){

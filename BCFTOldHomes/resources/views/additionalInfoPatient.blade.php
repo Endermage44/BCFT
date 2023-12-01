@@ -6,14 +6,11 @@
         <div class="header">
 
 
-<nav>
-    <h2>BCFT Retirement Home</h2>
-        <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-        </ul>
-</nav>
+            <div id="NavBar">
+                <a href="#section1">Section 1</a>
+                <a href="#section2">Section 2</a>
+                <a href="#section3">Section 3</a>
+              </div>
 
 
             <!--Content before waves-->
@@ -32,35 +29,35 @@
             </div>
             <div class="box">
                 <h3>Additional Patient info page</h3>
-            
+
 
                 <!-- Form for updating patient information -->
             <form action="{{ url('/api/Patients')}}" method="get">
                 @csrf
-            
+
                 <label for="patientId">Patient ID:</label>
                 <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
-            
+
                 <!-- Display fields (read-only) for patient group, admission date, and email ID -->
                 <label for="patientGroup">Patient Group:</label>
                 <input type="text" id="patientGroup" name="patientGroup" readonly>
-            
+
                 <label for="admissionDate">Admission Date:</label>
                 <input type="text" id="admissionDate" name="admissionDate" readonly>
-            
+
                 <label for="emailID">Email ID:</label>
                 <input type="text" id="emailID" name="emailID" readonly>
-            
+
                 <!-- Add any other additional fields for updating information -->
-            
+                <br>
                 <button type="submit">OK</button>
                 <button type="button" onclick="cancelForm()">Cancel</button>
             </form>
-            
+
             <script>
                function fetchPatientInfo() {
                 var patientId = document.getElementById('patientId').value;
-            
+
                 // Make an AJAX request to fetch patient details based on the entered ID
                 fetch(`/api/Patients/${patientId}`, {
                     method: 'GET',
@@ -81,11 +78,11 @@
                     // Optionally, handle errors here
                 });
             }
-            
+
                 function cancelForm() {
                     // Add any additional logic you may need before canceling
                     alert('Form canceled'); // Optional: Show an alert or perform other actions
-            
+
                     // Optionally, you can reset the form fields
                     document.getElementById('patientId').value = '';
                     document.getElementById('patientGroup').value = '';
@@ -93,6 +90,12 @@
                     document.getElementById('emailID').value = '';
                     // Reset other fields as needed
                 }
+
+
+
+
+
+
             </script>
             </div>
             <!--Waves Container-->
@@ -137,115 +140,12 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
-}
-
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
-}
-
-nav li {
-  padding-left: 3rem; /* 7! */
-
-}
-
-nav li, a, ul {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-}
-
-nav a {
-    color: black;
-    padding-right: 5px;
-}
-
-nav h2 {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-  margin-left: 10px;
-}
-
-.styled-table {
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 1px;
-    font-size:14px;
-    font-weight: bold;
-    color: white;
-    min-width: 400px;
-    max-width: 800px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table thead tr {
-    background-color: rgb(255, 255, 255, .8);
-    color: black;
-    text-align: left;
-
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: rgb(255, 255, 255, .8);
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid white;
-}
-
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: black;
-}
-
-#pastAppointments {
-    margin-bottom: 50px;
-}
-
-#upcomingAppointments {
-    margin-bottom: 50px;
-}
-
-#search-bar {
-    height: 35px;
-    border-radius: 48px;
-    background: rgb(255, 255, 255, .8);
-    width: 800px;
-    padding-right: 40px;
-    padding-left: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
 
 h1 {
   font-family: 'Lato', sans-serif;
   font-weight:300;
   letter-spacing: 2px;
   font-size:48px;
-
-
 
 }
 h3 {
@@ -271,10 +171,41 @@ a {
 }
 
 button {
+    display: inline-block;
+    outline: 0;
+    width:7%;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 0;
     font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: rgb(255, 255, 255, .8);
+    letter-spacing: 1px;
+    font-size:14px;
+    color: rgb(255, 255, 255, .8);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+    will-change: box-shadow,transform;
+    background: #FCFCFD;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    height: 35px;
+    padding: 0 32px;
+    font-size: 18px;
+    border-radius: 6px;
+     color: #36395a;
+     transition: box-shadow 0.15s ease,transform 0.15s ease;
+        :active{
+            box-shadow: inset 0px 3px 7px #d6d6e7;
+            transform: translateY(2px);
+                }
+            }
+
+            button:hover{
+        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+        transform: translateY(-2px);
+    }
+
+
+.box {
+    margin-bottom: 250px;
 }
 
 .header {
@@ -283,6 +214,7 @@ button {
   background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
   color:white;
 }
+
 .logo {
   width:50px;
   fill:white;
@@ -401,31 +333,7 @@ input::placeholder {
     color: white
 }
 
-.box button {
-    display: inline-block;
-    outline: 0;
-    width:25%;
-    border: 0;
-    cursor: pointer;
-    transition: box-shadow 0.15s ease,transform 0.15s ease;
-    will-change: box-shadow,transform;
-    background: #FCFCFD;
-    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-    height: 35px;
-    padding: 0 32px;
-    font-size: 18px;
-    border-radius: 6px;
-     color: #36395a;
-     transition: box-shadow 0.15s ease,transform 0.15s ease;
-        :active{
-            box-shadow: inset 0px 3px 7px #d6d6e7;
-            transform: translateY(2px);
-                }
-            }
 
-    button:hover{
-        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-        transform: translateY(-2px);
-    }
+
     </style>
 </html>

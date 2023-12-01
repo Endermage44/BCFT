@@ -204,6 +204,10 @@ button {
   }
 }
 
+.box {
+    margin-bottom: 160px;
+}
+
 .box input {
     background-color: #fff;
     height: 35px;

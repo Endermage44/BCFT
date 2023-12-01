@@ -5,15 +5,16 @@
     <body>
         <div class="header">
 
-
-<nav>
-    <h2>BCFT Retirement Home</h2>
-        <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-        </ul>
-</nav>
+           <div id="NavBar">
+            <div class="topnav">
+                <a class="active" href="#home">BCFT Retirement Home</a>
+                <a href="#home">Home</a>
+                <a href="#aboutUs">About us</a>
+                <div class="topnav-right">
+                  <a href="#about">Logout</a>
+                </div>
+              </div>
+            </div>
 
 
             <!--Content before waves-->
@@ -136,6 +137,7 @@
             <!--Content ends-->
 
 
+
     </body>
 
 
@@ -151,43 +153,84 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
-}
-
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
-}
-
-nav li {
-  padding-left: 3rem; /* 7! */
-
-}
-
-nav li, a, ul {
+#NavBar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
+    letter-spacing: 1px;
+    font-size:14px;
+    /* font-weight: bold; */
 }
 
-nav a {
-    color: black;
-    padding-right: 5px;
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
 }
 
-nav h2 {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-  margin-left: 10px;
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
 }
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+button {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    color: rgb(255, 255, 255, .8);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+    will-change: box-shadow,transform;
+    background: #FCFCFD;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    height: 35px;
+    padding: 0 32px;
+    font-size: 18px;
+    border-radius: 6px;
+     color: #36395a;
+     transition: box-shadow 0.15s ease,transform 0.15s ease;
+        :active{
+            box-shadow: inset 0px 3px 7px #d6d6e7;
+            transform: translateY(2px);
+                }
+            }
+
+    button:hover{
+        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+        transform: translateY(-2px);
+    }
 
 .styled-table {
     border-collapse: collapse;
@@ -251,15 +294,11 @@ nav h2 {
     margin-right: auto;
 }
 
-
-
 h1 {
   font-family: 'Lato', sans-serif;
   font-weight:300;
   letter-spacing: 2px;
   font-size:48px;
-
-
 
 }
 h3 {
@@ -282,13 +321,6 @@ a {
   letter-spacing: 1px;
   font-size:14px;
   color: #333333;
-}
-
-button {
-    font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: rgb(255, 255, 255, .8);
 }
 
 .header {
@@ -415,30 +447,6 @@ input::placeholder {
     color: white
 }
 
-.box button {
-    display: inline-block;
-    outline: 0;
-    border: 0;
-    cursor: pointer;
-    transition: box-shadow 0.15s ease,transform 0.15s ease;
-    will-change: box-shadow,transform;
-    background: #FCFCFD;
-    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-    height: 35px;
-    padding: 0 32px;
-    font-size: 18px;
-    border-radius: 6px;
-     color: #36395a;
-     transition: box-shadow 0.15s ease,transform 0.15s ease;
-        :active{
-            box-shadow: inset 0px 3px 7px #d6d6e7;
-            transform: translateY(2px);
-                }
-            }
 
-    button:hover{
-        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-        transform: translateY(-2px);
-    }
     </style>
 </html>
