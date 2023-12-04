@@ -28,6 +28,7 @@
                     <select name="role" id="role" required>
                         <option value="Admin">Admin</option>
                         <option value="Supervisor">Supervisor</option>
+                        <option value="Caregiver">Caregiver</option>
                         <option value="Doctor">Doctor</option>
                         <option value="Patient">Patient</option>
                         <!-- Add other roles as needed -->
