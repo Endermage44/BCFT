@@ -34,47 +34,47 @@
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
                     <!-- Payments -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/payments') }}>
                         <button type='submit'>Payments</button>
                     </form>
 
                     <!--Patient Additiional Info -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/patAdInfo') }}>
                         <button type='submit'>Patient Additional Information</button>
                     </form>
 
                     <!-- Roles -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/roles') }}>
                         <button type='submit'>Roles</button>
                     </form>
 
                     <!-- Doctor's Appts -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/docAppt') }}>
                         <button type='submit'>Doctor Appointments</button>
                     </form>
 
                     <!-- Employees -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/empList') }}>
                         <button type='submit'>Employee List</button>
                     </form>
 
                     <!-- Rosters (View/Edit) -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/roster') }}>
                         <button type='submit'>Add/View Rosters</button>
                     </form>
 
                     <!-- Patient Info -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/patInfo') }}>
                         <button type='submit'>Patient Information</button>
                     </form>
 
                     <!-- Admin Report -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/adReport') }}>
                         <button type='submit'>Admin Report</button>
                     </form>
 
                     <!-- Registration Approval -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/regApprove') }}>
                         <button type='submit'>Registration Approvals</button>
                     </form>
                 </div>
