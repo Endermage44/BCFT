@@ -34,12 +34,12 @@
                 <h3>Patient DashBoard</h3>
                 <div class='box'>
                     <!-- Patients Home -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/patHome') }}>
                         <button type='submit'>Daily Checklists</button>
                     </form>
             
                     <!--Rosters (View Only) -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/roster') }}>
                         <button type='submit'>Rosters</button>
                     </form>
                 </div>

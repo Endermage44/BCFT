@@ -34,17 +34,17 @@
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
                     <!-- Roster (View Only) -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/roster') }}>
                         <button type='submit'>Rosters</button>
                     </form>
 
                     <!--Patient of Doctor -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/patOfDoc') }}>
                         <button type='submit'>Patient of Doctor</button>
                     </form>
 
                     <!-- Doctor's Home -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/docHome') }}>
                         <button type='submit'>Doctor's Home</button>
                     </form>
                 </div>
