@@ -29,13 +29,5 @@ class homeController extends Controller
 
         // THIS IS TEMPORARY UNTIL WE HAVE THE OTHER PAGES, This just lets me know that the validation is working
         // return view('/registration');
-<<<<<<< Updated upstream
-=======
-        
-
-        
-
-
->>>>>>> Stashed changes
     }
 }
