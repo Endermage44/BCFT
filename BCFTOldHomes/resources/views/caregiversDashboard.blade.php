@@ -33,19 +33,21 @@
             <div class="box">
                 <h3>Caregivers DashBoard</h3>
                 <div class='box'>
-                    <!-- Payments -->
-                    <form action={{ url('/') }}>
+                    <!-- Patient list -->
+                    <form action={{ url('/patInfo') }}>
                         <button type='submit'>Patients</button>
                     </form>
 
                     <!--Patient Additiional Info -->
                     <form action={{ url('/') }}>
+
+                    <!--Caregiver's Home -->
+                    <form action={{ url('/careHome') }}>
                         <button type='submit'>Caregiver's Home</button>
                     </form>
 
-
                     <!--Roster (View Only) -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/roster') }}>
                       <button type='submit'>Rosters</button>
                   </form>
                 </div>
@@ -130,11 +132,77 @@ nav h2 {
   margin-left: 10px;
 }
 
+.styled-table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    font-weight: bold;
+    color: white;
+    min-width: 400px;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: rgb(255, 255, 255, .8);
+    color: black;
+    text-align: left;
+
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: rgb(255, 255, 255, .8);
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid white;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
+
+#pastAppointments {
+    margin-bottom: 50px;
+}
+
+#upcomingAppointments {
+    margin-bottom: 50px;
+}
+
+#search-bar {
+    height: 35px;
+    border-radius: 48px;
+    background: rgb(255, 255, 255, .8);
+    width: 800px;
+    padding-right: 40px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
 h1 {
   font-family: 'Lato', sans-serif;
   font-weight:300;
   letter-spacing: 2px;
   font-size:48px;
+
+
 
 }
 h3 {
@@ -160,35 +228,11 @@ a {
 }
 
 button {
-    display: inline-block;
-    outline: 0;
-    width:25%;
     font-family: 'Lato', sans-serif;
-    letter-spacing: 1px;
-    font-size:14px;
-    color: rgb(255, 255, 255, .8);
-    border: 0;
-    cursor: pointer;
-    transition: box-shadow 0.15s ease,transform 0.15s ease;
-    will-change: box-shadow,transform;
-    background: #FCFCFD;
-    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-    height: 35px;
-    padding: 0 32px;
-    font-size: 18px;
-    border-radius: 6px;
-     color: #36395a;
-     transition: box-shadow 0.15s ease,transform 0.15s ease;
-        :active{
-            box-shadow: inset 0px 3px 7px #d6d6e7;
-            transform: translateY(2px);
-                }
-            }
-
-    button:hover{
-        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-        transform: translateY(-2px);
-    }
+  letter-spacing: 1px;
+  font-size:14px;
+  color: rgb(255, 255, 255, .8);
+}
 
 .header {
   position:relative;
@@ -204,16 +248,11 @@ button {
   vertical-align: middle;
 }
 
-.box {
-    margin-bottom: 180px;
-}
-
 .inner-header {
-  height:30vh;
+  height:20vh;
   width:100%;
   margin: 0;
   padding: 0;
-
 }
 
 .flex { /*Flexbox for containers*/
@@ -319,6 +358,31 @@ input::placeholder {
     color: white
 }
 
+.box button {
+    display: inline-block;
+    outline: 0;
+    width:25%;
+    border: 0;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+    will-change: box-shadow,transform;
+    background: #FCFCFD;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    height: 35px;
+    padding: 0 32px;
+    font-size: 18px;
+    border-radius: 6px;
+     color: #36395a;
+     transition: box-shadow 0.15s ease,transform 0.15s ease;
+        :active{
+            box-shadow: inset 0px 3px 7px #d6d6e7;
+            transform: translateY(2px);
+                }
+            }
 
+    button:hover{
+        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+        transform: translateY(-2px);
+    }
     </style>
 </html>

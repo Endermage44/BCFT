@@ -33,39 +33,40 @@
             <div class="box">
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
-                    <!--Patient Additiional Info -->
-                    <form action={{ url('/patAdInfo') }}>
-                        <button type='submit'>Patient Additional Information</button>
+                    <div>
+                        <form action="{{ url('/api/Patients')}}" method="get">
+                            @csrf
+                    
+                            <label for="patientId">Patient ID:</label>
+                            <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
+                        </form>
+                </div>
+                    <div>
+                        <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Total Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$10</td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+                <div>
+                    <form action="{{ url('/api/Patients')}}" method="get">
+                        @csrf
+                
+                        <label for="patientId">Patient ID:</label>
+                        <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
+                        <br>
+                        <button>Ok</button>
+                        <button>Cancel</button>
                     </form>
-
-                    <!-- Doctor's Appts -->
-                    <form action={{ url('/docAppt') }}>
-                        <button type='submit'>Doctor Appointments</button>
-                    </form>
-
-                    <!-- Employees (View Only) -->
-                    <form action={{ url('/empList') }}>
-                        <button type='submit'>Employee List</button>
-                    </form>
-
-                    <!-- Rosters (View/Edit) -->
-                    <form action={{ url('/roster') }}>
-                        <button type='submit'>Add/View Rosters</button>
-                    </form>
-
-                    <!-- Patient Info -->
-                    <form action={{ url('/patInfo') }}>
-                        <button type='submit'>Patient Information</button>
-                    </form>
-
-                    <!-- Admin Report -->
-                    <form action={{ url('/adReport') }}>
-                        <button type='submit'>Admin Report</button>
-                    </form>
-
-                    <!-- Registration Approval -->
-                    <form action={{ url('/regApprove') }}>
-                        <button type='submit'>Registration Approvals</button>
+                    <form action="">
+                        <button>Update</button>
                     </form>
                 </div>
             </div>
@@ -153,6 +154,7 @@ nav h2 {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom:50px;
     font-family: 'Lato', sans-serif;
     letter-spacing: 1px;
     font-size:14px;
@@ -166,7 +168,7 @@ nav h2 {
 .styled-table thead tr {
     background-color: rgb(255, 255, 255, .8);
     color: black;
-    text-align: left;
+    text-align: center;
 
 }
 
@@ -177,6 +179,7 @@ nav h2 {
 
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
+    text-align:center;
 }
 
 .styled-table tbody tr:nth-of-type(even) {

@@ -31,44 +31,82 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Welcome Doctor Smith</h3>
-                <div class='box'>
-                    <!--Patient Additiional Info -->
-                    <form action={{ url('/patAdInfo') }}>
-                        <button type='submit'>Patient Additional Information</button>
-                    </form>
-
-                    <!-- Doctor's Appts -->
-                    <form action={{ url('/docAppt') }}>
-                        <button type='submit'>Doctor Appointments</button>
-                    </form>
-
-                    <!-- Employees (View Only) -->
-                    <form action={{ url('/empList') }}>
-                        <button type='submit'>Employee List</button>
-                    </form>
-
-                    <!-- Rosters (View/Edit) -->
-                    <form action={{ url('/roster') }}>
-                        <button type='submit'>Add/View Rosters</button>
-                    </form>
-
-                    <!-- Patient Info -->
-                    <form action={{ url('/patInfo') }}>
-                        <button type='submit'>Patient Information</button>
-                    </form>
-
-                    <!-- Admin Report -->
-                    <form action={{ url('/adReport') }}>
-                        <button type='submit'>Admin Report</button>
-                    </form>
-
-                    <!-- Registration Approval -->
-                    <form action={{ url('/regApprove') }}>
-                        <button type='submit'>Registration Approvals</button>
+                <h3>Admin Report</h3>
+                <div class="searchBar">
+                    <form class="p-3">
+                        <div class="col-12 col-md-8 container">
+                            <input id="search-bar" placeholder="Please Enter Patient ID">
+                        </div>
+                        <button type="submit">Search</button>
                     </form>
                 </div>
+                <p>Patient Activity</p>
+            <div id="appointmentTables">
+               <div id="pastAppointments">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Doctor's Name</th>
+                                <th>Doctor's Appointment</th>
+                                <th>Caregiver's Name</th>
+                                <th>Morning Medicine</th>
+                                <th>Afternoon Medicine</th>
+                                <th>Night Medicine</th>
+                                <th>Breakfast</th>
+                                <th>Lunch</th>
+                                <th>Dinner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {{-- Add logic here to pull patient name --}}
+                                <td>John Smith</td>
+                                {{-- Add logic here to pull assigned doctors name --}}
+                                <td>Dr. Roger</td>
+                                {{-- Add logic here to pull doctors appointment date --}}
+                                <td>10/31/2023</td>
+                                {{-- Add logic here to pull care givers name for the date --}}
+                                <td>Annabelle</td>
+                                {{-- Add logic here to pull data from the caregivers home, alsoi I think checkboxes should be in use here --}}
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Missed</td>
+                                {{-- Same here for the comment above --}}
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                            </tr>
+                            <tr class="active-row">
+                                {{-- Logic from above should be reused here, we should figure out a potential loop for this --}}
+                                <td>John Cope</td>
+                                <td>Dr. Masters</td>
+                                <td>12/31/2023</td>
+                                <td>Miles</td>
+                                <td>Missed</td>
+                                <td>Missed</td>
+                                <td>Missed</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                            </tr>
+                            <tr>
+                                <td>Blake</td>
+                                <td>Dr. Tanner</td>
+                                <td>09/21/2023</td>
+                                <td>Shams</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                                <td>Given</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        </div>
             <!--Waves Container-->
             <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -103,6 +141,7 @@
 
     <style>
 
+/* this is not my code, it was reused from another page. not sure where it really came from if im being honest */
 /* login form */
 
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
@@ -380,7 +419,6 @@ input::placeholder {
     outline: 0;
     border: 0;
     cursor: pointer;
-    width: 20%;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
     will-change: box-shadow,transform;
     background: #FCFCFD;

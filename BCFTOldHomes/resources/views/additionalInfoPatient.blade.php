@@ -140,6 +140,65 @@ body {
   margin:0;
 }
 
+nav {
+  display: flex; /* 1 */
+  justify-content: space-between; /* 2 */
+  padding:2px ; /* 3 */
+  background: rgb(255, 255, 255, .8);
+}
+
+nav ul {
+  display: flex; /* 5 */
+  list-style: none; /* 6 */
+  margin-right: 10px;
+}
+
+nav li {
+  padding-left: 3rem; /* 7! */
+
+}
+
+nav li, a, ul {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: black;
+}
+
+nav a {
+    color: black;
+    padding-right: 5px;
+}
+
+nav h2 {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: black;
+  margin-left: 10px;
+}
+
+
+#pastAppointments {
+    margin-bottom: 50px;
+}
+
+#upcomingAppointments {
+    margin-bottom: 50px;
+}
+
+#search-bar {
+    height: 35px;
+    border-radius: 48px;
+    background: rgb(255, 255, 255, .8);
+    width: 800px;
+    padding-right: 40px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 
 h1 {
   font-family: 'Lato', sans-serif;
@@ -333,6 +392,29 @@ input::placeholder {
     color: white
 }
 
+.box button {
+    display: inline-block; /* Change display to inline-block */
+    outline: 0;
+    width: 48%; /* Set a width less than 50% to leave some space between buttons */
+    margin: 0 2%; /* Add margin to create space between buttons */
+    border: 0;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    will-change: box-shadow, transform;
+    background: #FCFCFD;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    height: 35px;
+    padding: 0 16px; /* Adjust padding to fit buttons side by side */
+    font-size: 18px;
+    border-radius: 6px;
+    color: #36395a;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+button:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    transform: translateY(-2px);
+}
 
 
     </style>

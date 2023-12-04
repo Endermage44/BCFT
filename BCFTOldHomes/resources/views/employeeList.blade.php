@@ -33,40 +33,63 @@
             <div class="box">
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
-                    <!--Patient Additiional Info -->
-                    <form action={{ url('/patAdInfo') }}>
-                        <button type='submit'>Patient Additional Information</button>
+                    <div>
+                        <form action="{{ url('/api/Patients')}}" method="get">
+                        @csrf
+                    
+                        <label for="patientId">Patient ID:</label>
+                        <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
+                    
+                        <!-- Display fields (read-only) for patient group, admission date, and email ID -->
+                        <label for="patientGroup">Patient Group:</label>
+                        <input type="text" id="patientGroup" name="patientGroup" readonly>
+                    
+                        <label for="admissionDate">Admission Date:</label>
+                        <input type="text" id="admissionDate" name="admissionDate" readonly>
+                    
+                        <label for="emailID">Email ID:</label>
+                        <input type="text" id="emailID" name="emailID" readonly>
                     </form>
-
-                    <!-- Doctor's Appts -->
-                    <form action={{ url('/docAppt') }}>
-                        <button type='submit'>Doctor Appointments</button>
-                    </form>
-
-                    <!-- Employees (View Only) -->
-                    <form action={{ url('/empList') }}>
-                        <button type='submit'>Employee List</button>
-                    </form>
-
-                    <!-- Rosters (View/Edit) -->
-                    <form action={{ url('/roster') }}>
-                        <button type='submit'>Add/View Rosters</button>
-                    </form>
-
-                    <!-- Patient Info -->
-                    <form action={{ url('/patInfo') }}>
-                        <button type='submit'>Patient Information</button>
-                    </form>
-
-                    <!-- Admin Report -->
-                    <form action={{ url('/adReport') }}>
-                        <button type='submit'>Admin Report</button>
-                    </form>
-
-                    <!-- Registration Approval -->
-                    <form action={{ url('/regApprove') }}>
-                        <button type='submit'>Registration Approvals</button>
-                    </form>
+                </div>
+                    <div>
+                        <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Appt. Date</th>
+                                <th>Comment</th>
+                                <th>Morning Med</th>
+                                <th>Afternoon Med</th>
+                                <th>Night Med</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>10/27/23</td>
+                                <td>Recovering well; John has been consistently taking meds</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr class="active-row">
+                                <td>John Smith</td>
+                                <td>11/30/23</td>
+                                <td>John is entering last stage of treatment for bronchytis; plan to continue meds until further notice</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>12/28/23</td>
+                                <td>Treatment is complete</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table></div>
                 </div>
             </div>
             <!--Waves Container-->

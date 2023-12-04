@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\users;
+use Illuminate\Support\Facades\DB;
 
 class homeController extends Controller
 {
@@ -27,7 +28,24 @@ class homeController extends Controller
             return;
         }
 
-        // THIS IS TEMPORARY UNTIL WE HAVE THE OTHER PAGES, This just lets me know that the validation is working
-        // return view('/registration');
+        if ($existingUser->roleID == 1){
+            return view('/adminDash');
+        }
+
+        if ($existingUser->roleID == 2){
+            return view('/supervisorDash');
+        }
+
+        if ($existingUser->roleID == 3){
+            return view('/doctorDash');
+        }
+
+        if ($existingUser->roleID == 4){
+            return view('/caregiversDashboard');
+        }
+
+        if ($existingUser->roleID == 5){
+            return view('/patientsDashboard');
+        } 
     }
 }

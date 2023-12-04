@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\JsonResponse;
 
 class registerControllerAPI extends Controller
 {
@@ -37,7 +36,7 @@ class registerControllerAPI extends Controller
             $existingUser = DB::table('users')->where('emailID', $user['emailID'])->first();
 
             if ($existingUser !== null && $user['emailID'] == $existingUser->emailID) {
-                return view('/registration', ['error' => 'User Already Exists']);
+                return view('/registration', ['error' => 'A User With This Email Already Exists']);
             }
             
             $dob = new \DateTime($user['DOB']);
@@ -61,15 +60,15 @@ class registerControllerAPI extends Controller
                 'age'=> $age
             ]);
             if ($roleID == 1){
-                return view('/adminLanding');
+                return view('/supervisorDash');
             }
     
             if ($roleID == 2){
-                return view('/adminLanding');
+                return view('/adminDash');
             }
     
             if ($roleID == 3){
-                return view('/doctorLanding');
+                return view('/doctorDash');
             }
     
             if ($roleID == 4){

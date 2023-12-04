@@ -5,17 +5,6 @@
     <body>
         <div class="header">
 
-
-<nav>
-    <h2>BCFT Retirement Home</h2>
-        <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-        </ul>
-</nav>
-
-
             <!--Content before waves-->
             <div class="inner-header flex">
             <!--Just the logo.. Don't mind this-->
@@ -31,43 +20,49 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Welcome Doctor Smith</h3>
-                <div class='box'>
-                    <!--Patient Additiional Info -->
-                    <form action={{ url('/patAdInfo') }}>
-                        <button type='submit'>Patient Additional Information</button>
-                    </form>
+                <h3>Appointment Center</h3>
+                <form id="apptCreate" action="" method="POST">
+                    @csrf
 
-                    <!-- Doctor's Appts -->
-                    <form action={{ url('/docAppt') }}>
-                        <button type='submit'>Doctor Appointments</button>
-                    </form>
+                    <!-- First Name, Last Name, Email, Phone, Password, Date of Birth -->
+                    <label for="first_name">Enter Patient ID:</label>
+                    <input placeholder= "Enter Patient ID" type="text" name="firstName" id="first_name" required>
 
-                    <!-- Employees (View Only) -->
-                    <form action={{ url('/empList') }}>
-                        <button type='submit'>Employee List</button>
-                    </form>
+                    <label for="last_name">Enter Appt. Date:</label>
+                    <input placeholder= "Date" type="text" name="lastName" id="last_name" required>
 
-                    <!-- Rosters (View/Edit) -->
-                    <form action={{ url('/roster') }}>
-                        <button type='submit'>Add/View Rosters</button>
-                    </form>
 
-                    <!-- Patient Info -->
-                    <form action={{ url('/patInfo') }}>
-                        <button type='submit'>Patient Information</button>
-                    </form>
-
-                    <!-- Admin Report -->
-                    <form action={{ url('/adReport') }}>
-                        <button type='submit'>Admin Report</button>
-                    </form>
-
-                    <!-- Registration Approval -->
-                    <form action={{ url('/regApprove') }}>
-                        <button type='submit'>Registration Approvals</button>
-                    </form>
+                    <!-- OK and Cancel Buttons -->
+                    <button type="submit" name="register">Schedule</button>
+                    <button type="button" onclick="clearFields()">Clear</button>
+                </form>
+                <div id="pastAppointments">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Appt. Date</th>
+                                <th>Available Doctors</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1234</td>
+                                <td>John Smith</td>
+                                <td>10/27/23</td>
+                                <td>Dr. Johnson</td>
+                            </tr>
+                            <tr class="active-row">
+                                <td>1234</td>
+                                <td>John Smith</td>
+                                <td>10/27/23</td>
+                                <td>Dr. Johnson</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
             <!--Waves Container-->
             <div>
@@ -96,6 +91,29 @@
             <!--Content ends-->
 
 
+            <script>
+                document.getElementById('role').addEventListener('change', function () {
+                    var patientFields = document.getElementById('patientFields');
+                    if (this.value === 'Patient') {
+                        patientFields.style.display = 'block';
+                    } else {
+                        patientFields.style.display = 'none';
+                    }
+                });
+
+                function clearFields() {
+                    var element = document.getElementById("register");
+                    element.reset()
+                }
+            </script>
+
+            @if(isset($error)) --}}
+            <script>
+              alert("{{ $error }}")
+              </script>
+            @endif
+
+
     </body>
 
 
@@ -111,45 +129,104 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color:linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+    padding: 20px;
+    border-radius: 8px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    border: solid, white, 2px;
 }
 
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
 }
-
-nav li {
-  padding-left: 3rem; /* 7! */
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-weight:800;
+  letter-spacing: 0px;
+  font-size:30px;
+  color:  white;
 
 }
-
-nav li, a, ul {
+p {
   font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   font-size:14px;
-  color: black;
+  color: #333333;
 }
 
-nav a {
-    color: black;
-    padding-right: 5px;
-}
-
-nav h2 {
-  font-family: 'Lato', sans-serif;
+a {
+    font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   font-size:14px;
-  color: black;
-  margin-left: 10px;
+  color: #333333;
 }
 
-.styled-table {
+button {
+    font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+    select,
+        input
+            {
+            width: 100%;
+            padding: 5px 15px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            line-height: normal;
+            border: 1px solid #a6a6a6;
+            border-top-color: #949494;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset;
+            outline: 0;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size:14px;
+            color: #333333;
+            border-radius: 6px;
+            border-radius: 4px;
+            background-color: #fff;
+            height: 35px;
+        }
+
+        label {
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size:14px;
+            color: white;
+            font-weight: bold;
+        }
+
+
+
+        option {
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size:14px;
+            color: #333333;
+        }
+
+
+        select:focus,
+        input:focus {
+            outline: none;
+            border-color: #005780; /* Slightly darker blue when focused */
+        }
+
+        #patientFields {
+            display: none;
+        }
+
+        .styled-table {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -198,57 +275,6 @@ nav h2 {
 
 #upcomingAppointments {
     margin-bottom: 50px;
-}
-
-#search-bar {
-    height: 35px;
-    border-radius: 48px;
-    background: rgb(255, 255, 255, .8);
-    width: 800px;
-    padding-right: 40px;
-    padding-left: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-h1 {
-  font-family: 'Lato', sans-serif;
-  font-weight:300;
-  letter-spacing: 2px;
-  font-size:48px;
-
-
-
-}
-h3 {
-  font-family: 'Lato', sans-serif;
-  font-weight:800;
-  letter-spacing: 0px;
-  font-size:30px;
-  color:  white;
-
-}
-p {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: #333333;
-}
-
-a {
-    font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: #333333;
-}
-
-button {
-    font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: rgb(255, 255, 255, .8);
 }
 
 .header {
@@ -341,23 +367,7 @@ button {
   }
 }
 
-.box input {
-    background-color: #fff;
-    height: 35px;
-    padding: 5px 15px;
-    line-height: normal;
-    border: 1px solid #a6a6a6;
-    border-top-color: #949494;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset;
-    outline: 0;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 1px;
-    font-size:14px;
-    color: #333333;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
+
 
 input:focus{
     border-color: rgba(0,172,193,1);
@@ -380,7 +390,6 @@ input::placeholder {
     outline: 0;
     border: 0;
     cursor: pointer;
-    width: 20%;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
     will-change: box-shadow,transform;
     background: #FCFCFD;
