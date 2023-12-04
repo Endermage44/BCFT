@@ -60,7 +60,7 @@ Route::get('/patAdInfo', [dashboardsController::class,'addInfoPatient']);
 //Doctors Home Page
 Route::get('/docHome', [dashboardsController::class,'doctorsHome']);
 //Patients Home Page
-Route::get('/patHome', [dashboardsController::class,'patientHome']);
+Route::get('/patHome', [dashboardsController::class,'patientsHome']);
 //Patient Information Page
 Route::get('/patInfo', [dashboardsController::class,'patientInfo']);
 //Roles Page

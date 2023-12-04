@@ -37,7 +37,10 @@
                     <form action={{ url('/patInfo') }}>
                         <button type='submit'>Patients</button>
                     </form>
-            
+
+                    <!--Patient Additiional Info -->
+                    <form action={{ url('/') }}>
+
                     <!--Caregiver's Home -->
                     <form action={{ url('/careHome') }}>
                         <button type='submit'>Caregiver's Home</button>
