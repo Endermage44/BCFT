@@ -34,17 +34,17 @@
                 <h3>Caregivers DashBoard</h3>
                 <div class='box'>
                     <!-- Patient list -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/patInfo') }}>
                         <button type='submit'>Patients</button>
                     </form>
             
                     <!--Caregiver's Home -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/careHome') }}>
                         <button type='submit'>Caregiver's Home</button>
                     </form>
 
                     <!--Roster (View Only) -->
-                    <form action={{ url('/') }}>
+                    <form action={{ url('/roster') }}>
                       <button type='submit'>Rosters</button>
                   </form>
                 </div>
