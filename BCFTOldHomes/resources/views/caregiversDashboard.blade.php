@@ -33,12 +33,12 @@
             <div class="box">
                 <h3>Caregivers DashBoard</h3>
                 <div class='box'>
-                    <!-- Payments -->
+                    <!-- Patient list -->
                     <form action={{ url('/') }}>
                         <button type='submit'>Patients</button>
                     </form>
             
-                    <!--Patient Additiional Info -->
+                    <!--Caregiver's Home -->
                     <form action={{ url('/') }}>
                         <button type='submit'>Caregiver's Home</button>
                     </form>
