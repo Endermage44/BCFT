@@ -34,18 +34,23 @@
                 <h3>Patients Home</h3>
             
                 <form id="patientForm">
+                  <Div>
                     <label for="patientID">Patient ID:</label>
-                    <input type="text" id="patientID" placeholder="Enter Patient ID" disabled>
+                    <input type="text" id="patientID" placeholder="Enter Patient ID" >
             
                     <label for="patientName">Patient Name:</label>
                     <input type="text" id="patientName" placeholder="Patient Name" disabled>
             
+                    <label for="TodaysDate">Today's Date:</label>
+                    <input  id="TodaysDate" placeholder="Select Date" disabled>
+                  </Div>
+
                     <label for="doctorName">Doctor's Name:</label>
-                    <input type="text" id="doctorName" placeholder="Doctor's Name">
-            
-                    <label for="doctorAppointmentDate">Doctor's Appointment Date:</label>
-                    <input type="date" id="doctorAppointmentDate" placeholder="Select Date">
-            
+                    <input type="text" id="doctorName" placeholder="Doctor's Name" disabled>
+
+                    <label for="doctorAppointmentDate">Doctor's Appointment</label>
+                    <input type ="text" id="doctorAppointmentDate" placeholder="Doctor's Appoitnment" disabled>
+
                     <label for="caregiverName">Caregiver's Name:</label>
                     <input type="text" id="caregiverName" placeholder="Caregiver's Name">
             
@@ -85,35 +90,47 @@
                         <option value="no">No</option>
                     </select>
             
-                    <!-- Add other input fields as needed -->
+                    
             
-                    <button type="button" onclick="loginUser('patient123')">Login</button>
+                
                 </form>
             </div>
 
             {{-- have not completely verified the script, see this more as an base --}}
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    function loginUser(patientID) {
-                        // Simulate AJAX request to fetch patient details
-                        const patientDetails = {
-                            id: patientID,
-                            name: 'John Doe', 
-                            doctorName: 'Dr. Smith', 
-                            doctorAppointmentDate: '2023-12-01', 
-                            caregiverName: 'Jane Doe', 
-                        };
-            
-                        // Populate form fields with patient details
-                        document.getElementById('patientID').value = patientDetails.id;
-                        document.getElementById('patientName').value = patientDetails.name;
-                        document.getElementById('doctorName').value = patientDetails.doctorName;
-                        document.getElementById('doctorAppointmentDate').value = patientDetails.doctorAppointmentDate;
-                        document.getElementById('caregiverName').value = patientDetails.caregiverName;
-                
-                    }
-                });
-            </script>
+              document.addEventListener('DOMContentLoaded', () => {
+                  // Function to set the current date
+                  function setCurrentDate() {
+                      const currentDate = new Date();
+                      const formattedDate = currentDate.toISOString().split('T')[0];
+                      document.getElementById('TodaysDate').value = formattedDate;
+                  }
+          
+                  // Function to set patient details
+                  function setPatientDetails(patientID) {
+                      // Simulate AJAX request to fetch patient details
+                      const patientDetails = {
+                          id: patientID,
+                          name: 'John Doe',
+                          doctorName: 'Dr. Smith',
+                          doctorAppointmentDate: '2023-12-08', // Add the appointment date here
+                          caregiverName: 'Jane Doe',
+                      };
+          
+                      // Populate form fields with patient details
+                      document.getElementById('patientID').value = patientDetails.id;
+                      document.getElementById('patientName').value = patientDetails.name;
+                      document.getElementById('doctorName').value = patientDetails.doctorName;
+                      document.getElementById('doctorAppointmentDate').value = patientDetails.doctorAppointmentDate;
+                      document.getElementById('caregiverName').value = patientDetails.caregiverName;
+                  }
+          
+                  // Simulate patient login
+                  const loggedInPatientID = '123'; // Replace with the actual patient ID after login
+                  setCurrentDate();
+                  setPatientDetails(loggedInPatientID);
+              });
+          </script>
 
 
 
@@ -198,48 +215,7 @@ nav h2 {
   margin-left: 10px;
 }
 
-.styled-table {
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 1px;
-    font-size:14px;
-    font-weight: bold;
-    color: white;
-    min-width: 400px;
-    max-width: 800px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
 
-.styled-table thead tr {
-    background-color: rgb(255, 255, 255, .8);
-    color: black;
-    text-align: left;
-
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: rgb(255, 255, 255, .8);
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid white;
-}
-
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: black;
-}
 
 #pastAppointments {
     margin-bottom: 50px;

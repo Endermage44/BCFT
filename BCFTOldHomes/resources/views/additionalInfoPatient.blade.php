@@ -175,48 +175,6 @@ nav h2 {
   margin-left: 10px;
 }
 
-.styled-table {
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 1px;
-    font-size:14px;
-    font-weight: bold;
-    color: white;
-    min-width: 400px;
-    max-width: 800px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table thead tr {
-    background-color: rgb(255, 255, 255, .8);
-    color: black;
-    text-align: left;
-
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: rgb(255, 255, 255, .8);
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid white;
-}
-
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: black;
-}
 
 #pastAppointments {
     margin-bottom: 50px;
@@ -402,30 +360,29 @@ input::placeholder {
 }
 
 .box button {
-    display: inline-block;
+    display: inline-block; /* Change display to inline-block */
     outline: 0;
-    width:25%;
+    width: 48%; /* Set a width less than 50% to leave some space between buttons */
+    margin: 0 2%; /* Add margin to create space between buttons */
     border: 0;
     cursor: pointer;
-    transition: box-shadow 0.15s ease,transform 0.15s ease;
-    will-change: box-shadow,transform;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    will-change: box-shadow, transform;
     background: #FCFCFD;
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
     height: 35px;
-    padding: 0 32px;
+    padding: 0 16px; /* Adjust padding to fit buttons side by side */
     font-size: 18px;
     border-radius: 6px;
-     color: #36395a;
-     transition: box-shadow 0.15s ease,transform 0.15s ease;
-        :active{
-            box-shadow: inset 0px 3px 7px #d6d6e7;
-            transform: translateY(2px);
-                }
-            }
+    color: #36395a;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
 
-    button:hover{
-        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-        transform: translateY(-2px);
-    }
+button:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    transform: translateY(-2px);
+}
+
+
     </style>
 </html>
