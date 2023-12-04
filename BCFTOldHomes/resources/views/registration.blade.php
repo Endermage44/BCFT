@@ -50,8 +50,8 @@
                     <label for="password">Password:</label>
                     <input placeholder= "password" type="password" name="userPass" id="password" required>
 
-                    <label class= "last" for="dob">Date of Birth</label>
-                    <input placeholder= "YYYY-MM-DD" type="text" name="DOB" id="dob" required>
+                    <label class= "last" for="dob">Date of Birth:</label>
+                    <input placeholder= "YYYY-MM-DD" type="date" name="DOB" id="dob" required>
 
                     <!-- Additional Fields for Patient -->
                     <div id="patientFields">
