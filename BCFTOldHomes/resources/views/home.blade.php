@@ -32,7 +32,7 @@
                     <p>Not a member?</p>
                     <button type="submit">Register Now</button>
                 </form>
-                <form action="" method="">
+                <form action="{{ url('/familyLogin') }}" method="">
                     @csrf
                     <p>Family Member?</p>
                     <button type="submit">Click Here</button>

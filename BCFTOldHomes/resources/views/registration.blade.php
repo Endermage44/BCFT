@@ -74,7 +74,7 @@
                   <p>Already a member?</p>
                   <button type="submit">Log In</button>
               </form>
-              <form action="" method="">
+              <form action="{{ action('/familyLogin') }}" method="">
                   @csrf
                   <p>Family Member?</p>
                   <button type="submit">Click Here</button>
