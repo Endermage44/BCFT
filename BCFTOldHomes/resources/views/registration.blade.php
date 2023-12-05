@@ -69,6 +69,15 @@
                     <button type="submit" name="register">Submit</button>
                     <button type="button" onclick="clearFields()">Clear</button>
                 </form>
+                <form action="{{url('/register')}}" method="">
+                  @csrf
+                  <p>Already a member?</p>
+                  <button type="submit">Log In</button>
+              </form>
+              <form action="" method="">
+                  @csrf
+                  <a href="submit">Family Member?</a>
+              </form>
             </div>
             <!--Waves Container-->
             <div>
