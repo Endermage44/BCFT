@@ -34,7 +34,8 @@
                 </form>
                 <form action="" method="">
                     @csrf
-                    <a href="submit">Family Member?</a>
+                    <p>Family Member?</p>
+                    <button type="submit">Click Here</button>
                 </form>
             </div>
             <!--Waves Container-->
