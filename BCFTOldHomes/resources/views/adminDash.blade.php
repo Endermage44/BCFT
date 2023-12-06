@@ -56,7 +56,7 @@
                     </form>
 
                     <!-- Employees -->
-                    <form action={{ url('/empList') }}>
+                    <form action={{ url('/api/empList') }}>
                         <button type='submit'>Employee List</button>
                     </form>
 
