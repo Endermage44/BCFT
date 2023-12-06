@@ -23,8 +23,8 @@
                 <h3>Login or Signup</h3>
                 <form action="" method="POST">
                     @csrf
-                    <input class = "userInput" type ="text" name="emailID" placeholder="Email"/><br/>
-                    <input class = "passInput" type="password" name="userPass" placeholder="Password"/><br/>
+                    <input class = "userInput" type ="text" name="emailID" placeholder="Email" required><br/>
+                    <input class = "passInput" type="password" name="userPass" placeholder="Password" required><br/>
                         <button type="submit">Login</button>
                 </form>
                 <form action="{{url('/register')}}" method="">
