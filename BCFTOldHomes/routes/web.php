@@ -26,7 +26,7 @@ Route::get('/register', function() {
     return view('registration');
 });
 
-//Family Member Login
+// Family Member Login
 Route::get('/familyLogin', function() {
     return view('familyLogin');
 });
