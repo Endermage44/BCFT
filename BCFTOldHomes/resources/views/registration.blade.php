@@ -69,7 +69,8 @@
                     <button type="submit" name="register">Submit</button>
                     <button type="button" onclick="clearFields()">Clear</button>
                 </form>
-                <form action="{{url('/register')}}" method="">
+                <br>
+                <form id="already" action="{{url('/')}}" method="">
                   @csrf
                   <p>Already a member?</p>
                   <button type="submit">Log In</button>
@@ -106,7 +107,7 @@
             </div>
             <!--Content ends-->
 
-            
+
             <script>
                 document.getElementById('role').addEventListener('change', function () {
                     var patientFields = document.getElementById('patientFields');
@@ -122,7 +123,7 @@
                     element.reset()
                 }
             </script>
-            
+
             @if(isset($error)) --}}
             <script>
               alert("{{ $error }}")
@@ -147,13 +148,15 @@ body {
 
 form {
     max-width: 400px;
+    max-height: 520px;
     margin: 0 auto;
     background-color:linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 8px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     border: solid, white, 2px;
 }
+
 
 h1 {
   font-family: 'Lato', sans-serif;
@@ -188,6 +191,15 @@ button {
   letter-spacing: 1px;
   font-size:14px;
   color: #333333;
+  /* max-width: 123px;
+  min-height: 40px; */
+}
+
+#clickHere button {
+    /* padding: 0 35px; */
+    /* line-height: 30px; */
+    /* text-align: justify; */
+    display: inline-block;
 }
 
     select,
@@ -257,7 +269,7 @@ button {
 }
 
 .inner-header {
-  height:20vh;
+  height:10vh;
   width:100%;
   margin: 0;
   padding: 0;
@@ -273,7 +285,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height: 38vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -281,7 +293,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:5vh;
   text-align:center;
   background-color: white;
 }

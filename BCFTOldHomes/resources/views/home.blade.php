@@ -146,7 +146,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:10vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -154,7 +154,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }
