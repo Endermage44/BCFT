@@ -55,45 +55,21 @@
                 </div>
                     <div>
                         <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Appt. Date</th>
-                                <th>Comment</th>
-                                <th>Morning Med</th>
-                                <th>Afternoon Med</th>
-                                <th>Night Med</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Recovering well; John has been consistently taking meds</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>11/30/23</td>
-                                <td>John is entering last stage of treatment for bronchytis; plan to continue meds until further notice</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>12/28/23</td>
-                                <td>Treatment is complete</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                        </tbody>
-                    </table></div>
-                </div>
-            </div>
+                          <tr>
+                          <th>Employee ID</th>
+                          <th>Role ID</th>
+                          <th>Salary</th>
+                          <tr>
+                          @foreach($employee as $employees)
+                          <tr>
+                            <td>{{ $employees->employeeID }}</td>
+                            <td>{{ $employees->roleName }}</td>
+                            <td>{{ $employees->salary }}</td>
+                          </tr>
+                          @endforeach
+                        </table></div>
+                    </div>
+                 </div>
             <!--Waves Container-->
             <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

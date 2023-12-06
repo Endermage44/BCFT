@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\registerControllerAPI;
 use App\Http\Controllers\PatientControllerAPI;
+use App\Http\Controllers\employeesControllerAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('registration', registerControllerAPI::class);
 Route::resource('Patients', patientControllerAPI::class);
+Route::resource('empList', employeesControllerAPI::class);
