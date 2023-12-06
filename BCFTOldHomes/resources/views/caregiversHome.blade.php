@@ -6,14 +6,16 @@
         <div class="header">
 
 
-<nav>
-    <h2>BCFT Retirement Home</h2>
-        <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-        </ul>
-</nav>
+            <div id="NavBar">
+                <div class="topnav">
+                    <a class="active" href="#home">BCFT Retirement Home</a>
+                    <a href="#home">Home</a>
+                    <a href="#aboutUs">About us</a>
+                    <div class="topnav-right">
+                      <a href="#about">Logout</a>
+                    </div>
+                  </div>
+                </div>
 
 
             <!--Content before waves-->
@@ -31,8 +33,8 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="caregiver-tasks">
-                <h2>Caregiver's Home Page</h2>
-        
+                <h3>Caregiver's Home Page</h3>
+
                 <!-- Task checkboxes -->
                 <form id="caregiverTasksForm">
                     <label>
@@ -53,13 +55,13 @@
                     <label>
                         <input type="checkbox" name="dinner"> Dinner
                     </label>
-        
+
                     <!-- Submit and cancel buttons -->
                     <button type="button" onclick="submitTasks()">OK</button>
                     <button type="button" onclick="cancelTasks()">Cancel</button>
                 </form>
             </div>
-        
+
             <!-- Section to display patient duties -->
             <div class="patients-duties" style="display: none;">
                 <h3>List of Patients' Duties Today</h3>
@@ -67,39 +69,39 @@
                     <!-- Patient duties will be displayed here -->
                 </ul>
             </div>
-        
+
             <script>
                 // Function to show the section with patients' duties
                 function showPatientsDuties() {
                     // You can fetch and populate the patient duties dynamically
                     const patientsDutiesList = document.getElementById('patientsDutiesList');
-                    
+
                     // Dummy data for demonstration
                     const patientsDutiesData = [
                         { name: 'Patient 1', morning: true, afternoon: false, night: true, breakfast: true, lunch: false, dinner: true },
                         { name: 'Patient 2', morning: false, afternoon: true, night: true, breakfast: false, lunch: true, dinner: true },
                         // Add more patient duties as needed
                     ];
-        
+
                     patientsDutiesList.innerHTML = ''; // Clear previous data
-        
+
                     // Display patient duties
                     patientsDutiesData.forEach(patient => {
                         const listItem = document.createElement('li');
                         listItem.textContent = `${patient.name} - Morning: ${patient.morning}, Afternoon: ${patient.afternoon}, Night: ${patient.night}, Breakfast: ${patient.breakfast}, Lunch: ${patient.lunch}, Dinner: ${patient.dinner}`;
                         patientsDutiesList.appendChild(listItem);
                     });
-        
+
                     // Show the patients' duties section
                     document.querySelector('.patients-duties').style.display = 'block';
                 }
-        
+
                 // Function to submit caregiver tasks
                 function submitTasks() {
                     // Replace this with your logic to submit tasks to the database
                     console.log('Tasks submitted!');
                 }
-        
+
                 // Function to cancel caregiver tasks
                 function cancelTasks() {
                     // Replace this with your logic to clear the entered data
@@ -149,44 +151,55 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
-}
-
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
-}
-
-nav li {
-  padding-left: 3rem; /* 7! */
-
-}
-
-nav li, a, ul {
+#NavBar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
+    letter-spacing: 1px;
+    font-size:14px;
+    /* font-weight: bold; */
 }
 
-nav a {
-    color: black;
-    padding-right: 5px;
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
 }
 
-nav h2 {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-  margin-left: 10px;
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
 }
 
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  /* background-color: black; */
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
 
 
 #pastAppointments {
@@ -263,7 +276,7 @@ button {
 }
 
 .inner-header {
-  height:20vh;
+  height:40vh;
   width:100%;
   margin: 0;
   padding: 0;
@@ -279,7 +292,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:5vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -287,7 +300,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:1vh;
   text-align:center;
   background-color: white;
 }

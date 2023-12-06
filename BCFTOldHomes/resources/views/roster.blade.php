@@ -8,139 +8,318 @@
     <style>
         /* Styles for both pages */
         body {
-            margin: 0;
-        }
+  margin:0;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 2px;
-            background: rgb(255, 255, 255, .8);
-        }
+#NavBar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    /* font-weight: bold; */
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin-right: 10px;
-        }
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
+}
 
-        nav li {
-            padding-left: 3rem;
-        }
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
+}
 
-        nav li,
-        a,
-        ul,
-        h2 {
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  /* background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%); */
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+button {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    color: rgb(255, 255, 255, .8);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+    will-change: box-shadow,transform;
+    background: #FCFCFD;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+    height: 35px;
+    padding: 0 32px;
+    font-size: 18px;
+    border-radius: 6px;
+     color: #36395a;
+     transition: box-shadow 0.15s ease,transform 0.15s ease;
+        :active{
+            box-shadow: inset 0px 3px 7px #d6d6e7;
+            transform: translateY(2px);
+                }
+            }
+
+    button:hover{
+        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+        transform: translateY(-2px);
+    }
+
+.styled-table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    font-weight: bold;
+    color: white;
+    min-width: 400px;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: rgb(255, 255, 255, .8);
+    color: black;
+    text-align: left;
+
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: center
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: rgb(255, 255, 255, .8);
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid white;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
+
+
+#pastAppointments {
+    margin-bottom: 50px;
+}
+
+#upcomingAppointments {
+    margin-bottom: 50px;
+}
+
+#search-bar {
+    height: 35px;
+    border-radius: 48px;
+    background: rgb(255, 255, 255, .8);
+    width: 800px;
+    padding-right: 40px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+
+}
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-weight:800;
+  letter-spacing: 0px;
+  font-size:30px;
+  color:  white;
+
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+a {
+    font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+label {
             font-family: 'Lato', sans-serif;
             letter-spacing: 1px;
-            font-size: 14px;
-            color: black;
-        }
-
-        nav a {
-            color: black;
-            padding-right: 5px;
-        }
-
-        .header {
-            position: relative;
-            text-align: center;
-            background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+            font-size:14px;
             color: white;
+            font-weight: bold;
         }
 
-        .logo {
-            width: 50px;
-            fill: white;
-            padding-right: 15px;
-            display: inline-block;
-            vertical-align: middle;
-        }
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
 
-        .inner-header {
-            height: 20vh;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
+.inner-header {
+  height:20vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
 
-        .flex {
-            /*Flexbox for containers*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-        .waves {
-            position: relative;
-            width: 100%;
-            height: 15vh;
-            margin-bottom: -7px;
-            /*Fix for safari gap*/
-            min-height: 100px;
-            max-height: 150px;
-        }
+.waves {
+  position:relative;
+  width: 100%;
+  height:10vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
 
-        .content {
-            position: relative;
-            height: 20vh;
-            text-align: center;
-            background-color: white;
-        }
+.content {
+  position:relative;
+  height:10vh;
+  text-align:center;
+  background-color: white;
+}
 
-        /* Animation */
+/* Animation */
 
-        .parallax>use {
-            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
-        }
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% {
+    transform: translate3d(85px,0,0);
+  }
+}
+.loginOrSignupForm h2{
+    margin-top: 0px;
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
 
-        .parallax>use:nth-child(1) {
-            animation-delay: -2s;
-            animation-duration: 7s;
-        }
+.box input {
+    background-color: #fff;
+    height: 35px;
+    padding: 5px 15px;
+    line-height: normal;
+    border: 1px solid #a6a6a6;
+    border-top-color: #949494;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset;
+    outline: 0;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    color: #333333;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
 
-        .parallax>use:nth-child(2) {
-            animation-delay: -3s;
-            animation-duration: 10s;
-        }
+input:focus{
+    border-color: rgba(0,172,193,1);
+     box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+                    }
 
-        .parallax>use:nth-child(3) {
-            animation-delay: -4s;
-            animation-duration: 13s;
-        }
+input::placeholder {
+    font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
 
-        .parallax>use:nth-child(4) {
-            animation-delay: -5s;
-            animation-duration: 20s;
-        }
+.box p, a {
+    color: white
+}
 
-        @keyframes move-forever {
-            0% {
-                transform: translate3d(-90px, 0, 0);
-            }
+.box {
+    margin-bottom: 25px;
+}
 
-            100% {
-                transform: translate3d(85px, 0, 0);
-            }
-        }
-
-        /*Shrinking for mobile*/
-        @media (max-width: 768px) {
-            .waves {
-                height: 40px;
-                min-height: 40px;
-            }
-
-            .content {
-                height: 30vh;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-        }
 
         /* Styles for Roster and New Roster pages */
         .roster-container,
@@ -170,15 +349,16 @@
 
 <body>
     <div class="header">
-        <nav>
-            <h2>BCFT Retirement Home</h2>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </nav>
-
+        <div id="NavBar">
+            <div class="topnav">
+                <a class="active" href="#home">BCFT Retirement Home</a>
+                <a href="#home">Home</a>
+                <a href="#aboutUs">About us</a>
+                <div class="topnav-right">
+                  <a href="#about">Logout</a>
+                </div>
+              </div>
+            </div>
         <!-- Content before waves -->
         <div class="inner-header flex">
             <!-- Just the logo.. Don't mind this -->
@@ -193,6 +373,44 @@
                 </g>
             </svg>
             <h1>BCFT Retirement Home</h1>
+            <div class="roster-container">
+                <h2>Roster Page</h2>
+                <label for="rosterDate">Select Date:</label>
+                <input type="date" id="rosterDate" onchange="loadRoster()">
+
+                <div id="rosterOutput">
+                    <!-- Roster details will be displayed here -->
+                </div>
+            </div>
+
+            <!-- New Roster Page (visible to Admins and Supervisors) -->
+            <div class="new-roster-container" style="display: none;">
+                <h2>New Roster Page</h2>
+                <form>
+                    <label for="newRosterDate">Select Date:</label>
+                    <input type="date" id="newRosterDate" required>
+
+                    <label for="supervisor">Supervisor:</label>
+                    <input type="text" id="supervisor" required>
+
+                    <label for="doctor">Doctor:</label>
+                    <input type="text" id="doctor" required>
+
+                    <label for="caregiver1">Caregiver 1:</label>
+                    <input type="text" id="caregiver1" required>
+
+                    <label for="caregiver2">Caregiver 2:</label>
+                    <input type="text" id="caregiver2" required>
+
+                    <label for="caregiver3">Caregiver 3:</label>
+                    <input type="text" id="caregiver3" required>
+
+                    <label for="caregiver4">Caregiver 4:</label>
+                    <input type="text" id="caregiver4" required>
+
+                    <button type="button" onclick="submitRoster()">OK</button>
+                </form>
+            </div>
         </div>
 
         <!-- Waves Container -->
@@ -216,44 +434,7 @@
     <!-- Header ends -->
 
     <!-- Roster Page -->
-    <div class="roster-container">
-        <h2>Roster Page</h2>
-        <label for="rosterDate">Select Date:</label>
-        <input type="date" id="rosterDate" onchange="loadRoster()">
 
-        <div id="rosterOutput">
-            <!-- Roster details will be displayed here -->
-        </div>
-    </div>
-
-    <!-- New Roster Page (visible to Admins and Supervisors) -->
-    <div class="new-roster-container" style="display: none;">
-        <h2>New Roster Page</h2>
-        <form>
-            <label for="newRosterDate">Select Date:</label>
-            <input type="date" id="newRosterDate" required>
-
-            <label for="supervisor">Supervisor:</label>
-            <input type="text" id="supervisor" required>
-
-            <label for="doctor">Doctor:</label>
-            <input type="text" id="doctor" required>
-
-            <label for="caregiver1">Caregiver 1:</label>
-            <input type="text" id="caregiver1" required>
-
-            <label for="caregiver2">Caregiver 2:</label>
-            <input type="text" id="caregiver2" required>
-
-            <label for="caregiver3">Caregiver 3:</label>
-            <input type="text" id="caregiver3" required>
-
-            <label for="caregiver4">Caregiver 4:</label>
-            <input type="text" id="caregiver4" required>
-
-            <button type="button" onclick="submitRoster()">OK</button>
-        </form>
-    </div>
 
     <script>
         // Function to load and display the roster based on the selected date

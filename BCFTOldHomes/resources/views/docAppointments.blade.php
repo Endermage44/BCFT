@@ -3,6 +3,18 @@
 
     </head>
     <body>
+
+        <div id="NavBar">
+            <div class="topnav">
+                <a class="active" href="#home">BCFT Retirement Home</a>
+                <a href="#home">Home</a>
+                <a href="#aboutUs">About us</a>
+                <div class="topnav-right">
+                  <a href="#about">Logout</a>
+                </div>
+              </div>
+            </div>
+
         <div class="header">
 
             <!--Content before waves-->
@@ -90,7 +102,7 @@
             </div>
             <!--Content ends-->
 
-
+{{--
             <script>
                 document.getElementById('role').addEventListener('change', function () {
                     var patientFields = document.getElementById('patientFields');
@@ -105,7 +117,7 @@
                     var element = document.getElementById("register");
                     element.reset()
                 }
-            </script>
+            </script> --}}
 
             @if(isset($error)) --}}
             <script>
@@ -127,6 +139,45 @@
 
 body {
   margin:0;
+}
+
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  /* background-color: black; */
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
 }
 
 form {
@@ -308,7 +359,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:10vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -316,7 +367,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }

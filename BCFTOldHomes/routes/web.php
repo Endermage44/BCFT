@@ -37,7 +37,7 @@ Route::get('/docDash', function(){
 });
 
 //Admin Dashboard
-Route ::get('/adminDash', function() {
+Route::get('/adminDash', function() {
     return view('adminDash');
 });
 

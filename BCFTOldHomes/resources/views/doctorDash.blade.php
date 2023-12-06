@@ -6,14 +6,16 @@
         <div class="header">
 
 
-<nav>
-    <h2>BCFT Retirement Home</h2>
-        <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-        </ul>
-</nav>
+            <div id="NavBar">
+                <div class="topnav">
+                    <a class="active" href="#home">BCFT Retirement Home</a>
+                    <a href="#home">Home</a>
+                    <a href="#aboutUs">About us</a>
+                    <div class="topnav-right">
+                      <a href="#about">Logout</a>
+                    </div>
+                  </div>
+                </div>
 
 
             <!--Content before waves-->
@@ -91,44 +93,44 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
 }
 
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
 }
 
-nav li {
-  padding-left: 3rem; /* 7! */
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  /* background-color: black; */
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
 
 }
 
-nav li, a, ul {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
 }
-
-nav a {
-    color: black;
-    padding-right: 5px;
-}
-
-nav h2 {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-  margin-left: 10px;
-}
-
 .styled-table {
     border-collapse: collapse;
     margin-left: auto;
