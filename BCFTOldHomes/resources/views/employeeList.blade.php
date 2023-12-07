@@ -36,22 +36,6 @@
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
                     <div>
-                        <form action="{{ url('/api/Patients')}}" method="get">
-                        @csrf
-
-                        <label for="patientId">Patient ID:</label>
-                        <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
-
-                        <!-- Display fields (read-only) for patient group, admission date, and email ID -->
-                        <label for="patientGroup">Patient Group:</label>
-                        <input type="text" id="patientGroup" name="patientGroup" readonly>
-
-                        <label for="admissionDate">Admission Date:</label>
-                        <input type="text" id="admissionDate" name="admissionDate" readonly>
-
-                        <label for="emailID">Email ID:</label>
-                        <input type="text" id="emailID" name="emailID" readonly>
-                    </form>
                 </div>
                     <div>
                         <table class="styled-table">
@@ -65,9 +49,29 @@
                             <td>{{ $employees->employeeID }}</td>
                             <td>{{ $employees->roleName }}</td>
                             <td>{{ $employees->salary }}</td>
+                            <td> <button>Update Pay?</button> </td>
                           </tr>
                           @endforeach
-                        </table></div>
+                        </table>
+                    </div>
+                      <table class="styled-table">
+                        <tr>
+                          <th>Search Employee</th>
+                          <th>Update Pay</th>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input id="employeeID" name="employeeID" placeholder="Employee ID">
+                          </td>
+                          <td>
+                            <input id="updatedSalary" name="updatedSalary" placeholder="Updated Salary">
+                          </td>
+                        </tr>
+                      </table>
+                      {{-- <form action="{{url('/empList')}}" method="post">
+                        @csrf
+                      <button>Submit</button>
+                    </form> --}}
                     </div>
                  </div>
             <!--Waves Container-->
