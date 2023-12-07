@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboardsController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\Employee;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,3 +81,6 @@ Route::get('/regApprove', [dashboardsController::class,'regApproval']);
 Route::get('/careHome', [dashboardsController::class,'caregiversHome']);
 //Patient of Doctor Page
 Route::get('/patOfDoc', [dashboardsController::class,'patientOfDoctor']);
+
+// Testing
+// Route::post('/empList', [Employee::class, 'updateSalary']);

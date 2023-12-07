@@ -11,7 +11,7 @@ class employeesControllerAPI extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $employees = employees::all();
     
@@ -20,7 +20,7 @@ class employeesControllerAPI extends Controller
             $roleName = DB::table('roles')->where('roleID', $roleID)->value('roleName');
             $employee->roleName = $roleName;
         }
-    
+
         return view("employeeList", ["employee" => $employees]);
     }
     
@@ -48,9 +48,17 @@ class employeesControllerAPI extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        {
+            // $employee = employees::find($id);
 
+            // if(!$employee){
+            //     return view("employeeList");
+            // }
+
+            // return view("employeeList");
+
+    }
+}
     /**
      * Remove the specified resource from storage.
      */
