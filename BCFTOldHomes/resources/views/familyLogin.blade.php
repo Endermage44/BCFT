@@ -32,9 +32,55 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-               
+               <h3>Family Member's Home</h3>
             </div>
-            
+                   <!-- Form section with updated styles -->
+    <form id="apptCreate" action="" method="POST">
+      @csrf
+
+      <!-- Current Date -->
+      <label for="currentDate">Date:</label>
+      <input type="text" id="currentDate" value="Current Date" readonly>
+
+      <!-- Patient ID field -->
+      <label for="PatientID">Enter Patient ID:</label>
+      <input placeholder="Enter Patient ID" type="text" name="patiendID" id="PatientID" required>
+
+      <!-- Family Code field -->
+      <label for="FamilyCode">Enter Family code:</label>
+      <input placeholder="Enter Family code" type="text" name="FamilyCode" id="FamilyCode" required>
+ <div>
+      <!-- OK and Cancel buttons -->
+      <button type="button">OK</button>
+      <button type="button" class="cancel" onclick="cancelTasks()">Cancel</button>
+    </div>
+  </form>
+  <br>
+            <div class="caregiver-tasks">
+              <!-- Task checkboxes -->
+              <form id="caregiverTasksForm">
+                  <label>
+                      <input type="checkbox" name="morningMeds"> Morning Medicines
+                  </label>
+                  <label>
+                      <input type="checkbox" name="afternoonMeds"> Afternoon Medicines
+                  </label>
+                  <label>
+                      <input type="checkbox" name="nightMeds"> Night Medicines
+                  </label>
+                  <label>
+                      <input type="checkbox" name="breakfast"> Breakfast
+                  </label>
+                  <label>
+                      <input type="checkbox" name="lunch"> Lunch
+                  </label>
+                  <label>
+                      <input type="checkbox" name="dinner"> Dinner
+                  </label>
+
+                
+              </form>
+          </div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             <defs>
@@ -52,7 +98,7 @@
 
             </div>
             <!--Header ends-->
-
+    
             <!--Content starts-->
             <div class="content flex">
               <p> </p>
@@ -62,10 +108,6 @@
 
 
     </body>
-
-
-
-
     <style>
 
 /* login form */
@@ -370,6 +412,93 @@ input::placeholder {
     color: white
 }
 
+/* Adjusted styles for input fields and buttons */
+.box input {
+            background-color: #fff;
+            height: 35px;
+            padding: 5px 15px;
+            line-height: normal;
+            border: 1px solid #a6a6a6;
+            border-top-color: #949494;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset;
+            outline: 0;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: #333333;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            width: 100%; /* Added to make the input fields take full width */
+        }
+
+        input:focus {
+            border-color: rgba(0, 172, 193, 1);
+            box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+        }
+
+        input::placeholder {
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .box p,
+        a {
+            color: white;
+        }
+
+        /* Adjusted layout for Date, Enter Patient ID, Enter Family Code, and buttons */
+        #apptCreate {
+            width: 300px; /* Adjusted width for the form container */
+            margin: 0 auto; /* Centering the form */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        #apptCreate label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333333;
+        }
+
+        #apptCreate button {
+            display: inline-block;
+            outline: 0;
+            border: 0;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+            box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+            height: 35px;
+            padding: 0 32px;
+            font-size: 18px;
+            border-radius: 6px;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+        #apptCreate button:hover {
+            box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+            transform: translateY(-2px);
+        }
+
+        #apptCreate button:active {
+            box-shadow: inset 0px 3px 7px #d6d6e7;
+            transform: translateY(2px);
+        }
+
+        #apptCreate button.cancel {
+            background: #FCFCFD;
+            color: #36395a;
+        }
 
     </style>
 </html>
