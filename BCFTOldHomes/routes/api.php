@@ -3,6 +3,7 @@
 use App\Http\Controllers\registerControllerAPI;
 use App\Http\Controllers\PatientControllerAPI;
 use App\Http\Controllers\employeesControllerAPI;
+use App\Http\Controllers\roleControllerAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,6 @@ Route::resource('empList', employeesControllerAPI::class);
 
 //Patient Information Routes
 Route::resource('patientInfo', patientControllerAPI::class);
+
+//Roles Routes
+Route::resource('roles', roleControllerAPI::class);

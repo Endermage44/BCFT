@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\roles;
 
-class employeesControllerAPI extends Controller
+class roleControllerAPI extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $employees = DB::table("employees")
-            ->join("roles","employees.roleID","=","roles.roleID")
-            ->get();
+        $roles = roles::all();
 
-        return view("employeeList", ["employee" => $employees]);
+        return view("roles", ["roles" => $roles]);
     }
-    
-    
-    
 
     /**
      * Store a newly created resource in storage.
@@ -43,17 +39,9 @@ class employeesControllerAPI extends Controller
      */
     public function update(Request $request, string $id)
     {
-        {
-            // $employee = employees::find($id);
-
-            // if(!$employee){
-            //     return view("employeeList");
-            // }
-
-            // return view("employeeList");
-
+        //
     }
-}
+
     /**
      * Remove the specified resource from storage.
      */
