@@ -38,7 +38,7 @@ class registerControllerAPI extends Controller
             if ($existingUser !== null && $user['emailID'] == $existingUser->emailID) {
                 return view('/registration', ['error' => 'A User With This Email Already Exists']);
             }
-            
+
             $dob = new \DateTime($user['DOB']);
             $currentDate = new \DateTime();
 
@@ -62,19 +62,19 @@ class registerControllerAPI extends Controller
             if ($roleID == 1){
                 return view('/supervisorDash');
             }
-    
+        
             if ($roleID == 2){
                 return view('/adminDash');
             }
-    
+
             if ($roleID == 3){
                 return view('/doctorDash');
             }
-    
+
             if ($roleID == 4){
                 return view('/caregiversDashboard');
             }
-    
+
             if ($roleID == 5){
                 return view('/patientsDashboard');
             }

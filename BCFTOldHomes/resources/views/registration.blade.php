@@ -49,6 +49,12 @@
 
                     <label for="password">Password:</label>
                     <input placeholder= "password" type="password" name="userPass" id="password" required>
+                    <div class="checkbox-container">
+                        <label for="checkbox">Show Password?</label>
+                        <input type="checkbox" id="checkbox" onclick="showPass()">
+                    </div>
+
+                    <br>
 
                     <label class= "last" for="dob">Date of Birth:</label>
                     <input placeholder= "YYYY-MM-DD" type="date" name="DOB" id="dob" required>
@@ -122,6 +128,15 @@
                     var element = document.getElementById("register");
                     element.reset()
                 }
+
+                function showPass() {
+                var passwordField = document.getElementById('password');
+                    if (passwordField.type === "password") {
+                            passwordField.type = "text";
+                     } else {
+                        passwordField.type = "password";
+                        }
+                      }
             </script>
 
             @if(isset($error)) --}}
@@ -148,7 +163,7 @@ body {
 
 form {
     max-width: 400px;
-    max-height: 520px;
+    /* max-height: 520px; */
     margin: 0 auto;
     background-color:linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
     /* padding: 20px; */
@@ -190,9 +205,6 @@ button {
     font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   font-size:14px;
-  color: #333333;
-  /* max-width: 123px;
-  min-height: 40px; */
 }
 
 #clickHere button {
@@ -226,6 +238,31 @@ button {
             height: 35px;
         }
 
+        .checkbox-container {
+            display: flex;
+            max-width: 200px;
+
+        }
+
+        .checkbox-container input {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 0px;
+            margin-left: 10px;
+            accent-color: #333333;
+        }
+
+        .checkbox-container label {
+            display: inline;
+            /* min-width: 200px; */
+            text-align: left;
+            height: 15px;
+            /* min-width: 80px; */
+        }
+
         label {
             font-family: 'Lato', sans-serif;
             letter-spacing: 1px;
@@ -252,6 +289,8 @@ button {
 
         #patientFields {
             display: none;
+            margin-bottom: 10px;
+            overflow: hidden;
         }
 
 .header {
