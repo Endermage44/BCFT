@@ -23,8 +23,8 @@
                 <h3>Login or Signup</h3>
                 <form action="" method="POST">
                     @csrf
-                    <input class = "userInput" type ="text" name="emailID" placeholder="Email"/><br/>
-                    <input class = "passInput" type="password" name="userPass" placeholder="Password"/><br/>
+                    <input class = "userInput" type ="text" name="emailID" placeholder="Email" required><br/>
+                    <input class = "passInput" type="password" name="userPass" placeholder="Password" required><br/>
                         <button type="submit">Login</button>
                 </form>
                 <form action="{{url('/register')}}" method="">
@@ -32,7 +32,7 @@
                     <p>Not a member?</p>
                     <button type="submit">Register Now</button>
                 </form>
-                <form action="" method="">
+                <form action="{{ url('/familyLogin') }}" method="">
                     @csrf
                     <p>Family Member?</p>
                     <button type="submit">Click Here</button>
@@ -146,7 +146,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:10vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -154,7 +154,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }

@@ -7,10 +7,15 @@
 
 
             <div id="NavBar">
-                <a href="#section1">Section 1</a>
-                <a href="#section2">Section 2</a>
-                <a href="#section3">Section 3</a>
-              </div>
+                <div class="topnav">
+                    <a class="active" href="#home">BCFT Retirement Home</a>
+                    <a href="#home">Home</a>
+                    <a href="#aboutUs">About us</a>
+                    <div class="topnav-right">
+                      <a href="#about">Logout</a>
+                    </div>
+                  </div>
+                </div>
 
 
             <!--Content before waves-->
@@ -140,42 +145,55 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
-}
-
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
-}
-
-nav li {
-  padding-left: 3rem; /* 7! */
-
-}
-
-nav li, a, ul {
+#NavBar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
+    letter-spacing: 1px;
+    font-size:14px;
+    /* font-weight: bold; */
 }
 
-nav a {
-    color: black;
-    padding-right: 5px;
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
 }
 
-nav h2 {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-  margin-left: 10px;
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
 }
 
 
@@ -233,6 +251,7 @@ button {
     display: inline-block;
     outline: 0;
     width:7%;
+    max-width: 123px;
     margin-left: 15px;
     margin-right: 15px;
     border: 0;
@@ -299,7 +318,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:10vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -307,7 +326,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }

@@ -6,14 +6,16 @@
         <div class="header">
 
 
-<nav>
-    <h2>BCFT Retirement Home</h2>
-        <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-        </ul>
-</nav>
+            <div id="NavBar">
+                <div class="topnav">
+                    <a class="active" href="#home">BCFT Retirement Home</a>
+                    <a href="#home">Home</a>
+                    <a href="#aboutUs">About us</a>
+                    <div class="topnav-right">
+                      <a href="#about">Logout</a>
+                    </div>
+                  </div>
+                </div>
 
 
             <!--Content before waves-->
@@ -36,62 +38,38 @@
                     <div>
                         <form action="{{ url('/api/Patients')}}" method="get">
                         @csrf
-                    
+
                         <label for="patientId">Patient ID:</label>
                         <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
-                    
+
                         <!-- Display fields (read-only) for patient group, admission date, and email ID -->
                         <label for="patientGroup">Patient Group:</label>
                         <input type="text" id="patientGroup" name="patientGroup" readonly>
-                    
+
                         <label for="admissionDate">Admission Date:</label>
                         <input type="text" id="admissionDate" name="admissionDate" readonly>
-                    
+
                         <label for="emailID">Email ID:</label>
                         <input type="text" id="emailID" name="emailID" readonly>
                     </form>
                 </div>
                     <div>
                         <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Appt. Date</th>
-                                <th>Comment</th>
-                                <th>Morning Med</th>
-                                <th>Afternoon Med</th>
-                                <th>Night Med</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Recovering well; John has been consistently taking meds</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>11/30/23</td>
-                                <td>John is entering last stage of treatment for bronchytis; plan to continue meds until further notice</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>12/28/23</td>
-                                <td>Treatment is complete</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                                <td>Yes</td>
-                            </tr>
-                        </tbody>
-                    </table></div>
-                </div>
-            </div>
+                          <tr>
+                          <th>Employee ID</th>
+                          <th>Role ID</th>
+                          <th>Salary</th>
+                          <tr>
+                          @foreach($employee as $employees)
+                          <tr>
+                            <td>{{ $employees->employeeID }}</td>
+                            <td>{{ $employees->roleName }}</td>
+                            <td>{{ $employees->salary }}</td>
+                          </tr>
+                          @endforeach
+                        </table></div>
+                    </div>
+                 </div>
             <!--Waves Container-->
             <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -134,44 +112,55 @@ body {
   margin:0;
 }
 
-nav {
-  display: flex; /* 1 */
-  justify-content: space-between; /* 2 */
-  padding:2px ; /* 3 */
-  background: rgb(255, 255, 255, .8);
-}
-
-nav ul {
-  display: flex; /* 5 */
-  list-style: none; /* 6 */
-  margin-right: 10px;
-}
-
-nav li {
-  padding-left: 3rem; /* 7! */
-
-}
-
-nav li, a, ul {
+#NavBar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
+    letter-spacing: 1px;
+    font-size:14px;
+    /* font-weight: bold; */
 }
 
-nav a {
-    color: black;
-    padding-right: 5px;
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
 }
 
-nav h2 {
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 1px;
-  font-size:14px;
-  color: black;
-  margin-left: 10px;
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
 }
 
+/* Change the color of links on hover */
+.topnav a:hover {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  /* background-color: black; */
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
 .styled-table {
     border-collapse: collapse;
     margin-left: auto;
@@ -305,7 +294,7 @@ button {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:10vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -313,7 +302,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }

@@ -199,7 +199,7 @@ body {
 /* Add a color to the active/current link */
 .topnav a.active {
   /* background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%); */
-  background-color: black;
+  background-color: #333333;
   color: white;
   font-weight: bold;
   border-right:  rgb(255, 255, 255, .8)  solid 3px;
@@ -365,7 +365,7 @@ a {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:10vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
@@ -373,7 +373,7 @@ a {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }

@@ -26,13 +26,18 @@ Route::get('/register', function() {
     return view('registration');
 });
 
+// Family Member Login
+Route::get('/familyLogin', function() {
+    return view('familyLogin');
+});
+
 //Doctor Dash
 Route::get('/docDash', function(){
     return view('doctorDash');
 });
 
 //Admin Dashboard
-Route ::get('/adminDash', function() {
+Route::get('/adminDash', function() {
     return view('adminDash');
 });
 
@@ -67,8 +72,6 @@ Route::get('/patInfo', [dashboardsController::class,'patientInfo']);
 Route::get('/roles', [dashboardsController::class,'roles']);
 //Doctors Appointments Page
 Route::get('/docAppt', [dashboardsController::class,'doctorAppointments']);
-//Employee List Page
-Route::get('/empList', [dashboardsController::class,'employeeList']);
 //Admin Report Page
 Route::get('/adReport', [dashboardsController::class,'adminReport']);
 //Registration Approval Page
