@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Patients;
 use Illuminate\Support\Facades\DB;
 
 class PatientControllerAPI extends Controller

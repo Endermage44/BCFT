@@ -36,40 +36,18 @@
                 <p>Roles</p>
             <div id="appointmentTables">
                <div id="pastAppointments">
-                    <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Role</th>
-                                <th>Access Level</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Patient</td>
-                                <td>1</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>Family Member</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Doctor</td>
-                                <td>2</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>Caregiver</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Admin</td>
-                                <td>3</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>Supervisor</td>
-                                <td>3</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <table class="styled-table">
+                  <tr>
+                  <th>Role</th>
+                  <th>Access Level</th>
+                  <tr>
+                  @foreach($roles as $role)
+                  <tr>
+                    <td>{{ $role->roleName }}</td>
+                    <td>{{ $role->accessLevel }}</td>
+                  </tr>
+                  @endforeach
+                </table>
                 </div>
             </div>
             <div id="roleCreation">
