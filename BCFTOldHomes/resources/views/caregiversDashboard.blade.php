@@ -36,7 +36,7 @@
                 <h3>Caregivers DashBoard</h3>
                 <div class='box'>
                     <!-- Patient list -->
-                    <form action={{ url('/patInfo') }}>
+                    <form action={{ url('/api/patientInfo') }}>
                         <button type='submit'>Patients</button>
                     </form>
 

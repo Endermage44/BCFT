@@ -18,7 +18,10 @@ class Patients extends Model
         'admissionDate',
         'emailID',
         'familyCode',
-        'roleID'
+        'roleID',
+        'emergencyContact',
+        'relationToEc',
+        'groupID'
     ];
 
     //This helps retrieve information about on which groups the patients are in(i am not sure if a groups model would be needed , but this just
