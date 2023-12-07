@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCFT Retirement Home</title>
     <style>
-        /* Styles for both pages */
+        /* Common styles for both pages and header */
         body {
   margin:0;
 }
@@ -321,29 +321,159 @@ input::placeholder {
 }
 
 
-        /* Styles for Roster and New Roster pages */
+        /* Roster and New Roster pages */
         .roster-container,
         .new-roster-container {
             margin-top: 20px;
             text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        #rosterOutput {
-            margin-top: 20px;
+        h2 {
+            color: #333;
         }
 
-        /* Styles for the form on New Roster Page */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Form on New Roster Page */
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        label,
-        input,
-        button {
-            margin: 10px;
+        /* Table-like structure for supervisors, doctors, caregivers */
+        .roster-table {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
+
+        .roster-table div {
+            flex: 1;
+            margin: 10px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Roster output styles */
+        #rosterOutput {
+            /* margin-top: 20px;
+            text-align: left; */
+        }
+
+        #rosterOutput h3 {
+            color: #3498db;
+            /* margin-top: 15px; */
+        }
+
+        #rosterOutput .roster-details {
+            /* display: flex; */
+            /* justify-content:; */
+           
+        }
+
+        #rosterOutput .roster-details div {
+            /* flex: 1; */
+            margin: 10px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #rosterOutput p {
+            margin: 5px 0;
+            color: #555;
+            /* display: flex;  */
+              fel-direction: column; 
+        }
+
+        #NavBar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    /* font-weight: bold; */
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color:  rgb(255, 255, 255, .8);
+    overflow: hidden;
+    /* border-bottom: 3px solid rgb(255, 255, 255); */
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  /* background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%); */
+  background-color: rgb(0, 0, 0), 0, 0);
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color: white;
+  font-weight: bold;
+  border-right:  rgb(255, 255, 255, .8)  solid 3px;
+  border-bottom: rgb(255, 255, 255, .8) solid 3px;
+
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+        
     </style>
 </head>
 
