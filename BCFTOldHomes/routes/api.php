@@ -16,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+//Registration And User Routes
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Route::resource('registration', registerControllerAPI::class);
-Route::resource('Patients', patientControllerAPI::class);
+
+//Employee Information Routes
 Route::resource('empList', employeesControllerAPI::class);
+
+//Patient Information Routes
+Route::resource('patientInfo', patientControllerAPI::class);

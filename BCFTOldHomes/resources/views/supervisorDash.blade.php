@@ -56,7 +56,7 @@
                     </form>
 
                     <!-- Patient Info -->
-                    <form action={{ url('/patInfo') }}>
+                    <form action={{ url('/api/patientInfo') }}>
                         <button type='submit'>Patient Information</button>
                     </form>
 
