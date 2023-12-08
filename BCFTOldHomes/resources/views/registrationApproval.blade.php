@@ -37,86 +37,22 @@
             <div id="appointmentTables">
                <div id="pastAppointments">
                     <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Request Date</th>
-                                <th>Requested Role</th>
-                                <th>Approve</th>
-                                <th>Deny</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Doctor</td>
-                                <td><button type="submit">APPROVE</button></td>
-                                <td><button type="submit">DENY</button></td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Patient</td>
-                                <td><button type="submit">APPROVE</button></td>
-                                <td><button type="submit">DENY</button></td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Patient</td>
-                                <td><button type="submit">APPROVE</button></td>
-                                <td><button type="submit">DENY</button></td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Caregiver</td>
-                                <td><button type="submit">APPROVE</button></td>
-                                <td><button type="submit">DENY</button></td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Patient</td>
-                                <td><button type="submit">APPROVE</button></td>
-                                <td><button type="submit">DENY</button></td>
-                            </tr>
-                        </tbody>
+                      <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <tr>
+                        @foreach($approval as $approval)
+                        <tr>
+                          <td>{{ $approval->firstName }} {{ $approval->lastName }}</td>
+                          <td>{{ $approval->roleName }}</td>
+                          <td> <button>Update Pay?</button> </td>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
                 <div id="submitButton">
                     <button type="submit">Submit Selections</button>
-                </div>
-                <div id="upcomingAppointments">
-                    <p>Most Recent Registration Requests</p>
-                    <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Request Date</th>
-                                <th>Approved/Denied</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>10/27/23</td>
-                                <td>Approved</td>
-                            </tr>
-                            <tr class="active-row">
-                                <td>John Smith</td>
-                                <td>11/30/23</td>
-                                <td>Denied</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>12/28/23</td>
-                                <td>Approved</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                </div>   
             </div>
         </div>
             <!--Waves Container-->

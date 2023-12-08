@@ -67,18 +67,10 @@ Route::get('/patAdInfo', [dashboardsController::class,'addInfoPatient']);
 Route::get('/docHome', [dashboardsController::class,'doctorsHome']);
 //Patients Home Page
 Route::get('/patHome', [dashboardsController::class,'patientsHome']);
-//Patient Information Page
-Route::get('/patInfo', [dashboardsController::class,'patientInfo']);
-//Roles Page
-Route::get('/roles', [dashboardsController::class,'roles']);
 //Doctors Appointments Page
 Route::get('/docAppt', [dashboardsController::class,'doctorAppointments']);
-//Employee List Page
-Route::get('/empList', [dashboardsController::class,'employeeList']);
 //Admin Report Page
 Route::get('/adReport', [dashboardsController::class,'adminReport']);
-//Registration Approval Page
-Route::get('/regApprove', [dashboardsController::class,'regApproval']);
 //Caregiver's Home Page
 Route::get('/careHome', [dashboardsController::class,'caregiversHome']);
 //Patient of Doctor Page
