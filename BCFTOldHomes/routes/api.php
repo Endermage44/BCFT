@@ -1,10 +1,8 @@
 <?php
 
-<<<<<<< Updated upstream
+
 use App\Http\Controllers\regApproveControlAPI;
-=======
 use App\Http\Controllers\Employee;
->>>>>>> Stashed changes
 use App\Http\Controllers\registerControllerAPI;
 use App\Http\Controllers\PatientControllerAPI;
 use App\Http\Controllers\employeesControllerAPI;

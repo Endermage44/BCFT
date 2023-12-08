@@ -20,13 +20,13 @@ class employeesControllerAPI extends Controller
             $employeesID = $request->input('employeeID');
             $updatedSalary = $request->input('updatedSalary');
     
-            $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeesID]);
+            $updateEmpSalary = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeesID]);
     
-            if ($pleaseWork) {
+            if ($updateEmpSalary) {
                 return redirect()->back();
             }
 
-        return view("employeeList", ["employee" => $employee], ["pleaseWork" => $pleaseWork]);
+        return view("employeeList", ["employee" => $employee]);
     }
     
     /**
