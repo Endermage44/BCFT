@@ -1,8 +1,17 @@
+<?php 
+  if(isset($_POST['submit'])){
+    $employeesID = $request->input('employeeID');
+    $updatedSalary = $request->input('updatedSalary');
+                      
+    $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeesID]);
+  }
+?>
 <html>
     <head>
 
     </head>
     <body>
+      @csrf
         <div class="header">
 
 
@@ -49,29 +58,30 @@
                             <td>{{ $employees->employeeID }}</td>
                             <td>{{ $employees->roleName }}</td>
                             <td>{{ $employees->salary }}</td>
-                            <td> <button>Update Pay?</button> </td>
                           </tr>
                           @endforeach
                         </table>
                     </div>
-                      <table class="styled-table">
-                        <tr>
-                          <th>Search Employee</th>
-                          <th>Update Pay</th>
-                        </tr>
-                        <tr>
-                          <td>
-                            <input id="employeeID" name="employeeID" placeholder="Employee ID">
-                          </td>
-                          <td>
-                            <input id="updatedSalary" name="updatedSalary" placeholder="Updated Salary">
-                          </td>
-                        </tr>
-                      </table>
-                      {{-- <form action="{{url('/empList')}}" method="post">
-                        @csrf
-                      <button>Submit</button>
-                    </form> --}}
+                      <div>
+                      <form action="{{ url('api/empList') }}" method="put">
+                          @csrf
+                          <table class="styled-table">
+                            <tr>
+                              <th>Employee Search</th>
+                              <th>Update Pay</th>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input id="employeeID" name="employeeID" placeholder="Employee ID">
+                              </td>
+                              <td>
+                                <input id="updatedSalary" name="updatedSalary" placeholder="Updated Salary">
+                              </td>
+                            </tr>
+                          </table>
+                          <button name="submit">Submit</button>
+                        </form>
+                      </div>
                     </div>
                  </div>
             <!--Waves Container-->

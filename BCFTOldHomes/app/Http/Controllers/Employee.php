@@ -9,12 +9,27 @@ use Illuminate\Support\Facades\DB;
 
 class Employee extends Controller
 {
-//     function updateSalary(Request $request){
-//         $employeeID = $request->input('employeeID');
-//         $updatedSalary = $request->input('updatedSalary');
+    function index(Request $request){
 
-//         $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeeID]);
+        // $employees = DB::table("employees")
+        //     ->join("roles","employees.roleID","=","roles.roleID")
+        //     ->get();
 
-//         return view('/api/empList');
-//     }
+
+
+
+        // $employeeID = $request->input('employeeID');
+        // $updatedSalary = $request->input('updatedSalary');
+
+        // $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeeID]);
+
+
+        // if ($pleaseWork) {
+        //     return redirect()->route('empList')->with('success', 'Salary updated successfully.');
+        // } else {
+        //     return redirect()->route('empList')->with('error', 'Failed to update salary.');
+        // }
+
+        // return view("employeeList", ["pleaseWork" => $pleaseWork], ["employee" => $employees]);
+    }
 }

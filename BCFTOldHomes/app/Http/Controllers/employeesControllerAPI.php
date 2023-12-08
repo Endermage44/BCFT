@@ -12,16 +12,23 @@ class employeesControllerAPI extends Controller
      */
     public function index(Request $request)
     {
-        $employees = DB::table("employees")
+        $employee = DB::table("employees")
             ->join("roles","employees.roleID","=","roles.roleID")
             ->get();
 
-        return view("employeeList", ["employee" => $employees]);
+
+            $employeesID = $request->input('employeeID');
+            $updatedSalary = $request->input('updatedSalary');
+    
+            $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeesID]);
+    
+            if ($pleaseWork) {
+                return redirect()->back();
+            }
+
+        return view("employeeList", ["employee" => $employee], ["pleaseWork" => $pleaseWork]);
     }
     
-    
-    
-
     /**
      * Store a newly created resource in storage.
      */
@@ -33,9 +40,16 @@ class employeesControllerAPI extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, Request $request)
     {
-        //
+        // CODE DOES NOT WORK HERE
+        // $employeeID = $request->input('employeeID');
+
+        // if ($employeeID == '101') {
+        //     echo "success";
+        // }
+
+        // return view("employeeList", ["employeeID" => $employeeID]);
     }
 
     /**
@@ -44,11 +58,19 @@ class employeesControllerAPI extends Controller
     public function update(Request $request, string $id)
     {
         {
+            // CODE DOES NOT WORK HERE
             // $employee = employees::find($id);
 
             // if(!$employee){
             //     return view("employeeList");
             // }
+
+            // $employeeID = $request->input('employeeID');
+            // $updatedSalary = $request->input('updatedSalary');
+    
+            // $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeeID]);
+    
+            // return view("employeeList", ["pleaseWork"=> $pleaseWork], ["employeeID" => $employeeID]); 
 
             // return view("employeeList");
 
