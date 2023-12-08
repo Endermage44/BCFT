@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\regApproveControlAPI;
 use App\Http\Controllers\registerControllerAPI;
 use App\Http\Controllers\PatientControllerAPI;
 use App\Http\Controllers\employeesControllerAPI;
@@ -31,3 +32,6 @@ Route::resource('patientInfo', patientControllerAPI::class);
 
 //Roles Routes
 Route::resource('roles', roleControllerAPI::class);
+
+//Registration Approval Routes
+Route::resource('regApproval', regApproveControlAPI::class);
