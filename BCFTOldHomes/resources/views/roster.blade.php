@@ -149,7 +149,7 @@
             text-align: center;
         }
 
-        
+
 
         /* Styles for the form on New Roster Page */
         form {
@@ -247,7 +247,7 @@
        /* Updated styles for the Roster output */
        #rosterOutput {
             margin-top: 20px;
-          
+
         }
 
         #rosterOutput h3 {
@@ -339,7 +339,7 @@
                 </div>
               </div>
             </div>
-        
+
         </nav>
 
         <!-- Content before waves -->

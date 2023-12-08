@@ -289,6 +289,7 @@ button {
     min-width: 400px;
     max-width: 800px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #333333;
 }
 
 .styled-table thead tr {

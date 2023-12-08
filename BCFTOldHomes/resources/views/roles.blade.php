@@ -38,8 +38,8 @@
                <div id="pastAppointments">
                 <table class="styled-table">
                   <tr>
-                  <th>Role</th>
-                  <th>Access Level</th>
+                  <th class="theader" >Role</th>
+                  <th class="theader" >Access Level</th>
                   <tr>
                   @foreach($roles as $role)
                   <tr>
@@ -191,14 +191,20 @@ button {
     letter-spacing: 1px;
     font-size:14px;
     font-weight: bold;
-    color: white;
+    color: black;
     min-width: 400px;
     max-width: 600px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #333333;
+}
+
+.theader {
+    background-color: #333333;
+    color: white;
 }
 
 .styled-table thead tr {
-    background-color: rgb(255, 255, 255, .8);
+    background-color: #333333;
     color: black;
     text-align: left;
 
@@ -212,24 +218,39 @@ button {
 
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
+    background-color: rgb(255, 255, 255, .8);
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-    background-color: rgb(255, 255, 255, .8);
+    background-color: #333333;
+    color: white;
 }
 
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid white;
+
 }
 
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: black;
+    /* background-color: red; */
+}
+
+#appointmentTables {
+    /* background-color: #333333; */
+    width: 500px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 50px; */
+    margin-bottom: 50px;
+
 }
 
 
 #pastAppointments {
-    margin-bottom: 50px;
+    /* border: solid 5px; */
 }
 
 #upcomingAppointments {
