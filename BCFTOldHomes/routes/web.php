@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboardsController;
+use App\Http\Controllers\paymentControllerAPI;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\Employee;
 use App\Http\Controllers\employeesControllerAPI;
@@ -74,3 +75,7 @@ Route::get('/adReport', [dashboardsController::class,'adminReport']);
 Route::get('/careHome', [dashboardsController::class,'caregiversHome']);
 //Patient of Doctor Page
 Route::get('/patOfDoc', [dashboardsController::class,'patientOfDoctor']);
+
+
+//payment page
+Route::get('/patientPayment', [paymentControllerAPI::class,'paymentViewPage']);
