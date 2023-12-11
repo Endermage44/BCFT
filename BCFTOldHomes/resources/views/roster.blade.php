@@ -1,10 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
     <meta charset="UTF-8">
+    {{-- TOKEN HERE --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCFT Retirement Home</title>
+
+<body>
+    <div class="header">
+        <div id="NavBar">
+            <div class="topnav">
+                <a class="active" href="#home">BCFT Retirement Home</a>
+                <a href="#home">Home</a>
+                <a href="#aboutUs">About us</a>
+                <div class="topnav-right">
+                  <a href="#about">Logout</a>
+                </div>
+              </div>
+            </div>
+
+        </nav>
+
+        <!-- Content before waves -->
+        <div class="inner-header flex">
+            <!-- Just the logo.. Don't mind this -->
+            <svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
+                <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+                <g>
+                    <path fill="#fff"
+                        d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
+            C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
+            c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7    c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2  c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z" />
+                </g>
+            </svg>
+            <h1>BCFT Retirement Home</h1>
+        </div>
+
+   
+     <!-- Roster Page -->
+<div class="roster-container">
+    <h2>Roster Page</h2>
+    <form method="post" action="{{ route('api.roster.getRosterData') }}">
+        @csrf
+        <label for="rosterDate">Select Date:</label>
+        <input type="date" name="rosterDate" id="rosterDate" onchange="fetchRosterData()">
+    </form>
+    <div id="rosterOutput">
+        <!-- Roster table will be displayed here -->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function fetchRosterData() {
+        var rosterDate = document.getElementById('rosterDate').value;
+
+        // Make an asynchronous request to the API endpoint
+        fetch("{{ route('api.roster.getRosterData') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ rosterDate: rosterDate })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the retrieved data and update the UI
+            console.log(data);
+
+            // Update the roster details in the output div
+            updateRosterDetails(data.rosterData);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function updateRosterDetails(rosterData) {
+    var rosterOutput = document.getElementById('rosterOutput');
+
+    if (rosterData) {
+        // Update the HTML with the new roster details
+        rosterOutput.innerHTML = `
+            <h3>Roster Details for ${rosterData.rosterDate}</h3>
+            <div class="roster-details">
+                <div class="roster-item">
+                    <p>Supervisor:</p>
+                    <p>${rosterData.supervisor}</p>
+                </div>
+                <div class="roster-item">
+                    <p>Doctor:</p>
+                    <p>${rosterData.doctor}</p>
+                </div>
+                <div class="roster-item">
+                    <p>Caregiver 1:</p>
+                    <p>${rosterData.caregiver1}</p>
+                </div>
+                <div class="roster-item">
+                    <p>Caregiver 2:</p>
+                    <p>${rosterData.caregiver2}</p>
+                </div>
+                <div class="roster-item">
+                    <p>Caregiver 3:</p>
+                    <p>${rosterData.caregiver3}</p>
+                </div>
+                <div class="roster-item">
+                    <p>Caregiver 4:</p>
+                    <p>${rosterData.caregiver4}</p>
+                </div>
+            </div>
+        `;
+    }
+}
+</script>
+
+     <!-- New Roster Page (visible to Admins and Supervisors) -->
+     <div class="new-roster-container" style="display: none;">
+        <h2>New Roster Page</h2>
+        <form>
+            <label for="newRosterDate">Select Date:</label>
+            <input type="date" id="newRosterDate" required>
+
+            <!-- Table-like structure for supervisors, doctors, caregivers -->
+            <div class="roster-table">
+                <div>
+                    <label for="supervisor">Supervisor:</label>
+                    <input type="text" id="supervisor" required>
+                </div>
+                <div>
+                    <label for="doctor">Doctor:</label>
+                    <input type="text" id="doctor" required>
+                </div>
+                <div>
+                    <label for="caregiver1">Caregiver 1:</label>
+                    <input type="text" id="caregiver1" required>
+                </div>
+                <div>
+                    <label for="caregiver2">Caregiver 2:</label>
+                    <input type="text" id="caregiver2" required>
+                </div>
+                <div>
+                    <label for="caregiver3">Caregiver 3:</label>
+                    <input type="text" id="caregiver3" required>
+                </div>
+                <div>
+                    <label for="caregiver4">Caregiver 4:</label>
+                    <input type="text" id="caregiver4" required>
+                </div>
+            </div>
+
+            <button type="button" onclick="submitRoster()">OK</button>
+        </form>
+    </div>
+        <!-- Waves Container -->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!-- Waves end -->
+    </div>
+    <!-- Header ends -->
     <style>
         /* Styles for both pages */
         body {
@@ -244,36 +411,38 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
 
-       /* Updated styles for the Roster output */
-       #rosterOutput {
-            margin-top: 20px;
+/* Updated styles for the Roster output */
+#rosterOutput {
+    margin-top: 20px;
+    text-align: left;
+}
 
-        }
+#rosterOutput h3 {
+    color: #3498db;
+    margin-top: 15px;
+    text-align: center; /* Center the text */
+}
 
-        #rosterOutput h3 {
-            color: #3498db;
-            margin-top: 15px;
-        }
+.roster-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
-        #rosterOutput .roster-details {
-            display: flex;
-            justify-content: space-around;
-        }
+.roster-item {
+    flex-basis: 48%; /* Adjust the width as needed */
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
 
-        #rosterOutput .roster-details div {
-            flex: 1;
-            margin: 10px;
-            padding: 15px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        #rosterOutput p {
-            margin: 5px 0;
-            color: #555;
-        }
+.roster-item p {
+    margin: 5px 0;
+    color: #555;
+    text-align: left;
+}
 
         #NavBar {
   position: sticky;
@@ -325,107 +494,6 @@
   float: right;
 }
     </style>
-</head>
-
-<body>
-    <div class="header">
-        <div id="NavBar">
-            <div class="topnav">
-                <a class="active" href="#home">BCFT Retirement Home</a>
-                <a href="#home">Home</a>
-                <a href="#aboutUs">About us</a>
-                <div class="topnav-right">
-                  <a href="#about">Logout</a>
-                </div>
-              </div>
-            </div>
-
-        </nav>
-
-        <!-- Content before waves -->
-        <div class="inner-header flex">
-            <!-- Just the logo.. Don't mind this -->
-            <svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
-                <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
-                <g>
-                    <path fill="#fff"
-                        d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
-            C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
-            c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7    c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2  c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z" />
-                </g>
-            </svg>
-            <h1>BCFT Retirement Home</h1>
-        </div>
-
-   <!-- Roster Page -->
-   <div class="roster-container">
-    <h2>Roster Page</h2>
-    <label for="rosterDate">Select Date:</label>
-    <input type="date" id="rosterDate" onchange="loadRoster()">
-    <div id="rosterOutput">
-        <!-- Roster details will be displayed here -->
-    </div>
-</div>
-
-     <!-- New Roster Page (visible to Admins and Supervisors) -->
-     <div class="new-roster-container" style="display: none;">
-        <h2>New Roster Page</h2>
-        <form>
-            <label for="newRosterDate">Select Date:</label>
-            <input type="date" id="newRosterDate" required>
-
-            <!-- Table-like structure for supervisors, doctors, caregivers -->
-            <div class="roster-table">
-                <div>
-                    <label for="supervisor">Supervisor:</label>
-                    <input type="text" id="supervisor" required>
-                </div>
-                <div>
-                    <label for="doctor">Doctor:</label>
-                    <input type="text" id="doctor" required>
-                </div>
-                <div>
-                    <label for="caregiver1">Caregiver 1:</label>
-                    <input type="text" id="caregiver1" required>
-                </div>
-                <div>
-                    <label for="caregiver2">Caregiver 2:</label>
-                    <input type="text" id="caregiver2" required>
-                </div>
-                <div>
-                    <label for="caregiver3">Caregiver 3:</label>
-                    <input type="text" id="caregiver3" required>
-                </div>
-                <div>
-                    <label for="caregiver4">Caregiver 4:</label>
-                    <input type="text" id="caregiver4" required>
-                </div>
-            </div>
-
-            <button type="button" onclick="submitRoster()">OK</button>
-        </form>
-    </div>
-        <!-- Waves Container -->
-        <div>
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                <defs>
-                    <path id="gentle-wave"
-                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-                </g>
-            </svg>
-        </div>
-        <!-- Waves end -->
-    </div>
-    <!-- Header ends -->
-
 </body>
 
 </html>
