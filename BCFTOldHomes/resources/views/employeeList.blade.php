@@ -72,10 +72,10 @@
                             </tr>
                             <tr>
                               <td>
-                                <input id="employeeID" name="employeeID" placeholder="Employee ID">
+                                <input id="employeeID" name="employeeID" placeholder="Employee ID" required>
                               </td>
                               <td>
-                                <input id="updatedSalary" name="updatedSalary" placeholder="Updated Salary">
+                                <input id="updatedSalary" name="updatedSalary" placeholder="Updated Salary" required>
                               </td>
                             </tr>
                           </table>
