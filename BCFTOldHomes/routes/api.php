@@ -1,9 +1,9 @@
 <?php
 
 
+use App\Http\Controllers\adReportControllerAPI;
 use App\Http\Controllers\paymentControllerAPI;
 use App\Http\Controllers\regApproveControlAPI;
-use App\Http\Controllers\Employee;
 use App\Http\Controllers\registerControllerAPI;
 use App\Http\Controllers\PatientControllerAPI;
 use App\Http\Controllers\employeesControllerAPI;
@@ -45,3 +45,6 @@ Route::resource('payments', paymentControllerAPI::class);
 
 // Roster API Routes
 Route::post('/roster/getRosterData', [RosterApiController::class, 'getRosterData'])->name('api.roster.getRosterData');
+
+//Admin Report Routes
+Route::resource('adReports', adReportControllerAPI::class);

@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class pendingapproval extends Model
+class caregivers extends Model
 {
     use HasFactory;
     protected $fillable = [
+        "caregiverID",
+        "employeeID",
         "emailID",
-        "roleID",
-        "approved"
+        "roleID"
     ];
 }
