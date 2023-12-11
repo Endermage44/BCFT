@@ -1,3 +1,7 @@
+<?php 
+$id = 0;
+
+?>
 <html>
     <head>
 
@@ -36,40 +40,54 @@
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
                     <div>
-                        <form action="{{ url('/api/Patients')}}" method="get">
+                        <form action="{{ url('/patientPayment')}}" method="get" name="paymentForm" id="paymentForm">
                             @csrf
 
                             <label for="patientId">Patient ID:</label>
-                            <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
+                            <input type="text" id="patientId" name="patientId" onkeyup="findPatientAmount()" value="{{ empty($data) ? '' : $data->patientID }}">
+
+                            <?php 
+                                if(isset($data))
+                                    $id = $data->patientID;   
+                             ?>
+                            
+                            <label for="amountDue">Total Amount:</label>
+                            <input type="text" id="amountDue" name="amountDue" value="{{ empty($data) ? '' : $data->amountDue }}">
+
+                            <label for="newPayment">New Payment:</label>
+                            <input type="text" id="newPayment" name="newPayment" oninput="fetchPatientInfo()" required>
                         </form>
                 </div>
                     <div>
-                        <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Total Due</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>$10</td>
-                            </tr>
-                        </tbody>
-                    </table></div>
+                      <table class="styled-table">
+                          {{-- This is where the data will show up to view after searching --}}
+                      </table>
+                    </div>
                 </div>
                 <div>
-                    <form action="{{ url('/api/Patients')}}" method="get">
-                        @csrf
 
-                        <label for="patientId">Patient ID:</label>
-                        <input type="text" id="patientId" name="patientId" oninput="fetchPatientInfo()" required>
+                 
+                    <form action="{{ url('/api/payments/'.$id)}}" method="post">
+
+                     
+                        @csrf
+                        @method('put')
                         <br>
-                        <button>Ok</button>
-                        <button>Cancel</button>
-                    </form>
-                    <form action="">
+                        <input type="text" id="amountDue2" name="amountDue" value="{{ empty($data) ? '' : $data->amountDue }}" hidden>
                         <button>Update</button>
+                        
                     </form>
+
+                    
+
+                    
+                    <form>
+                      <button type="button" onclick="amountChange()">Ok</button>
+                    </form>
+
+                    <button >Cancel</button>
+                    
+              
                 </div>
             </div>
             <!--Waves Container-->
@@ -97,6 +115,41 @@
               <p> </p>
             </div>
             <!--Content ends-->
+
+            <script>
+
+            window.onload = function () {
+            // Clear URL parameters
+            history.replaceState({}, document.title, window.location.pathname);
+
+            // Reset the form
+              document.getElementById('paymentForm').reset();
+              };
+              function findPatientAmount() {
+                    var patientID = document.querySelector('#patientID').value;
+        
+                    if (patientID.length === 1) {
+                        document.getElementById('paymentForm').submit();
+                    }
+                }
+
+                function amountChange(){
+                  var previousAmount = document.getElementById('amountDue')
+                  var newAmount = document.getElementById('newPayment')
+                  var previousAmount2 = document.getElementById('amountDue2')
+
+                  var value1 = parseFloat(previousAmount.value) || 0;
+                  var value2 = parseFloat(newAmount.value) || 0;
+
+                  var difference = value1 - value2;
+
+                  previousAmount.value = difference;
+                  previousAmount2.value = difference;
+
+                  newAmount.value='';
+                  
+                }
+            </script>
 
 
     </body>

@@ -45,7 +45,8 @@
                         <tr>
                           <td>{{ $approval->firstName }} {{ $approval->lastName }}</td>
                           <td>{{ $approval->roleName }}</td>
-                          <td> <button>Update Pay?</button> </td>
+                          <td><button type="submit">APPROVE</button></td>
+                          <td><button type="submit">DENY</button></td>
                         </tr>
                         @endforeach
                     </table>
