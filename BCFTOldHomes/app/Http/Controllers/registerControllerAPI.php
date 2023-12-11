@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\users;
+use App\Models\pendingusers;
 use Illuminate\Support\Facades\DB;
 
 class registerControllerAPI extends Controller
@@ -49,7 +50,7 @@ class registerControllerAPI extends Controller
 
             $roleID = $role->roleID;
 
-            users::create([
+            pendingusers::create([
                 'roleID'=> $roleID,
                 'firstName'=> $user['firstName'],
                 'lastName'=> $user['lastName'],
@@ -59,25 +60,7 @@ class registerControllerAPI extends Controller
                 'DOB' => $user['DOB'],
                 'age'=> $age
             ]);
-            if ($roleID == 1){
-                return view('/supervisorDash');
-            }
-        
-            if ($roleID == 2){
-                return view('/adminDash');
-            }
-
-            if ($roleID == 3){
-                return view('/doctorDash');
-            }
-
-            if ($roleID == 4){
-                return view('/caregiversDashboard');
-            }
-
-            if ($roleID == 5){
-                return view('/patientsDashboard');
-            }
+            return view('/registration', ['success' => 'You have Sucessfully registered, please wait until your account is approved!']);
     }
 
     /**
