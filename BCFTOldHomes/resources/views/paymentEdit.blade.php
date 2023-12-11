@@ -44,18 +44,10 @@
                         </form>
                 </div>
                     <div>
-                        <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Total Due</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>$10</td>
-                            </tr>
-                        </tbody>
-                    </table></div>
+                      <table class="styled-table">
+                          {{-- This is where the data will show up to view after searching --}}
+                      </table>
+                    </div>
                 </div>
                 <div>
                     <form action="{{ url('/api/Patients')}}" method="get">

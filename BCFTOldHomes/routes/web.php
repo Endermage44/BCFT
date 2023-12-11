@@ -58,8 +58,6 @@ Route::get('/supDashboard', function(){
     return view('supervisorDash');
 });
 
-//Payment Page
-Route::get('/payments', [dashboardsController::class, 'paymentEdit']);
 //Roster Page
 Route::get('/roster', [dashboardsController::class,'roster']);
 //Patient Additional Info Page

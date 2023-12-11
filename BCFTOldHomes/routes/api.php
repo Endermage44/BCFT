@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\paymentControllerAPI;
 use App\Http\Controllers\regApproveControlAPI;
 use App\Http\Controllers\Employee;
 use App\Http\Controllers\registerControllerAPI;
@@ -37,3 +38,6 @@ Route::resource('roles', roleControllerAPI::class);
 
 //Registration Approval Routes
 Route::resource('regApproval', regApproveControlAPI::class);
+
+//Payment Routes
+Route::resource('payments', paymentControllerAPI::class);
