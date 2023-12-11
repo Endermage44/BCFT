@@ -1,11 +1,3 @@
-<?php 
-  if(isset($_POST['submit'])){
-    $employeesID = $request->input('employeeID');
-    $updatedSalary = $request->input('updatedSalary');
-                      
-    $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeesID]);
-  }
-?>
 <html>
     <head>
 

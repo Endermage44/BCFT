@@ -40,20 +40,29 @@
                       <tr>
                         <th>Name</th>
                         <th>Role</th>
+                        <th>Approve?</th>
+                        <th>Deny?</th>
                         <tr>
                         @foreach($approval as $approval)
                         <tr>
                           <td>{{ $approval->firstName }} {{ $approval->lastName }}</td>
                           <td>{{ $approval->roleName }}</td>
-                          <td><button type="submit">APPROVE</button></td>
-                          <td><button type="submit">DENY</button></td>
+                          <form action="{{url('/api/regApproval')}}" method="PUT">
+                            @csrf
+                              <input type="hidden" name="emailID" value="{{ $approval->emailID }}">
+                              <input type="hidden" name="action" value="Y">
+                          <td> <button type="submit" id="approval-btn">Approve</button> </td>
+                          </form>
+                          <form action="{{url('/api/regApproval')}}" method="PUT">
+                            @csrf
+                              <input type="hidden" name="emailID" value="{{ $approval->emailID }}">
+                              <input type="hidden" name="action" value="N">
+                          <td> <button type="submit" id="denial-btn" value="N">Deny</button> </td>
+                          </form>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-                <div id="submitButton">
-                    <button type="submit">Submit Selections</button>
-                </div>   
             </div>
         </div>
             <!--Waves Container-->

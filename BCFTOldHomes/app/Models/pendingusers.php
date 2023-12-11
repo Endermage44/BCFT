@@ -5,13 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class supervisors extends Model
+class pendingusers extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
     protected $fillable = [
-        "supervisorID",
-        "employeeID",
         "emailID",
+        "userPass",
+        "firstName",
+        "lastName",
+        "phoneNumber",
+        "DOB",
+        "age",
         "roleID",
+        "approved"
     ];
 }
