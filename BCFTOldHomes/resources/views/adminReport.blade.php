@@ -46,65 +46,7 @@
             <div id="appointmentTables">
                <div id="pastAppointments">
                     <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Patient Name</th>
-                                <th>Doctor's Name</th>
-                                <th>Doctor's Appointment</th>
-                                <th>Caregiver's Name</th>
-                                <th>Morning Medicine</th>
-                                <th>Afternoon Medicine</th>
-                                <th>Night Medicine</th>
-                                <th>Breakfast</th>
-                                <th>Lunch</th>
-                                <th>Dinner</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                {{-- Add logic here to pull patient name --}}
-                                <td>John Smith</td>
-                                {{-- Add logic here to pull assigned doctors name --}}
-                                <td>Dr. Roger</td>
-                                {{-- Add logic here to pull doctors appointment date --}}
-                                <td>10/31/2023</td>
-                                {{-- Add logic here to pull care givers name for the date --}}
-                                <td>Annabelle</td>
-                                {{-- Add logic here to pull data from the caregivers home, alsoi I think checkboxes should be in use here --}}
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Missed</td>
-                                {{-- Same here for the comment above --}}
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                            </tr>
-                            <tr class="active-row">
-                                {{-- Logic from above should be reused here, we should figure out a potential loop for this --}}
-                                <td>John Cope</td>
-                                <td>Dr. Masters</td>
-                                <td>12/31/2023</td>
-                                <td>Miles</td>
-                                <td>Missed</td>
-                                <td>Missed</td>
-                                <td>Missed</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                            </tr>
-                            <tr>
-                                <td>Blake</td>
-                                <td>Dr. Tanner</td>
-                                <td>09/21/2023</td>
-                                <td>Shams</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                                <td>Given</td>
-                            </tr>
-                        </tbody>
+                        
                     </table>
                 </div>
             </div>

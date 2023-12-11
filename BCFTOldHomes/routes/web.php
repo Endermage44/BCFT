@@ -5,6 +5,7 @@ use App\Http\Controllers\paymentControllerAPI;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\Employee;
 use App\Http\Controllers\employeesControllerAPI;
+use App\Http\Controllers\RosterApiController;
 use Illuminate\Support\Facades\Route;
 
 /*

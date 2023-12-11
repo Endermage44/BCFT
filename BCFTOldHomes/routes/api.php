@@ -1,12 +1,13 @@
 <?php
 
 
+use App\Http\Controllers\adReportControllerAPI;
 use App\Http\Controllers\paymentControllerAPI;
 use App\Http\Controllers\regApproveControlAPI;
-use App\Http\Controllers\Employee;
 use App\Http\Controllers\registerControllerAPI;
 use App\Http\Controllers\PatientControllerAPI;
 use App\Http\Controllers\employeesControllerAPI;
+use App\Http\Controllers\RosterApiController;
 use App\Http\Controllers\roleControllerAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,9 @@ Route::resource('regApproval', regApproveControlAPI::class);
 
 //Payment Routes
 Route::resource('payments', paymentControllerAPI::class);
+
+// Roster API Routes
+Route::post('/roster/getRosterData', [RosterApiController::class, 'getRosterData'])->name('api.roster.getRosterData');
+
+//Admin Report Routes
+Route::resource('adReports', adReportControllerAPI::class);

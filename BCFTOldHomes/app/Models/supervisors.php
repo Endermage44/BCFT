@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FamilyMember extends Model
+class supervisors extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'emailID',
-        'familyCode',
-        'patientID',
-        'roleID'
+        "supervisorID",
+        "employeeID",
+        "emailID",
+        "roleID",
     ];
 }
