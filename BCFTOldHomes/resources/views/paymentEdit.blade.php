@@ -128,7 +128,7 @@ $id = 0;
               function findPatientAmount() {
                     var patientID = document.querySelector('#patientID').value;
         
-                    if (patientID.length === 1) {
+                    if (patientID.length === 1 & patiendID.length <=3) {
                         document.getElementById('paymentForm').submit();
                     }
                 }

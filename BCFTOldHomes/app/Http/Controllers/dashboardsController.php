@@ -2,25 +2,54 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class dashboardsController extends Controller
 {
-    public function paymentEdit(){
-        return view("paymentEdit");
-    }
+    // public function paymentEdit(){
+    //     return view("paymentEdit");
+    // }
     public function roster(){
-        return view("roster");
+        if(isset($_SESSION['role'])){
+            return view('roster');
+        } else {
+            return redirect()->back();
+        }
     }
     public function addInfoPatient(){
-        return view("additionalInfoPatient");
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1 || $_SESSION['role'] != 2){
+                return redirect()->back();
+            } else {
+                return view("additionalInfoPatient");
+            }
+        } else {
+            return redirect()->back();
+        }
     }
     public function doctorsHome(){
-        return view("doctorsHome");
+        if(isset($_SESSION["role"])){
+            if($_SESSION['role'] != 3){
+                return redirect()->back();
+            } else {
+                return view('doctorsHome');
+            }
+        } else {
+            return redirect()->back();
+        }
     }
     public function patientsHome(){
-        return view("patientHome");
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 5){
+                return redirect()->back();
+            } else {
+                return view('patientHome');
+            }
+        } else {
+            return redirect()->back();
+        }
     }
     public function patientInfo(){
         return view("patientInfo");

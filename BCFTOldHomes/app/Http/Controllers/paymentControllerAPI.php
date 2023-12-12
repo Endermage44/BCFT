@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\payments;
 
 class paymentControllerAPI extends Controller
 {
@@ -55,17 +56,24 @@ class paymentControllerAPI extends Controller
     }
 
     public function paymentViewPage(Request $request){
-
-
-        if($request->patientId !== null){
-            $patient_id = $request->patientId;
-            $patient = DB::select('select * from payments where patientID = ?', [$patient_id]);
-            if($patient === []){
-                $patient[0] = [];
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1){
+                return redirect()->back();
+            } else {
+                if($request->patientId !== null){
+                    $patient_id = $request->patientId;
+                    $patient = DB::select('select * from payments where patientID = ?', [$patient_id]);
+                    if($patient === []){
+                        $patient[0] = [];
+                    }
+                   
+                    return view('paymentEdit', ['data'=>$patient[0]]);
+                }
+                return view('paymentEdit');
             }
-           
-            return view('paymentEdit', ['data'=>$patient[0]]);
+        } else {
+            return redirect()->back();
         }
-        return view('paymentEdit');
+
     }
 }
