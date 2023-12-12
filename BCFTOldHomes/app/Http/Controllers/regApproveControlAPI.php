@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\pendingusers;
 use App\Models\users;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\DB;
 
 class regApproveControlAPI extends Controller
@@ -51,7 +52,15 @@ class regApproveControlAPI extends Controller
             pendingusers::where('emailID', $emailID)->update(['approved' => $action]);
         }
 
-        return view('registrationApproval', ['approval' => $approval]);
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2){
+                return view('registrationApproval', ['approval' => $approval]);
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**

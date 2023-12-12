@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +18,15 @@ class adReportControllerAPI extends Controller
         $report = DB::table("routines")
         ->get();
 
-        return view("adReports", ["report" => $report]);
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2){
+                return redirect()->back();
+            } else {
+                return view('adminReport', ["report" => $report]);
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**

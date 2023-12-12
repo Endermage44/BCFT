@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use App\Models\employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +28,15 @@ class employeesControllerAPI extends Controller
             if ($updateEmpSalary) {
                 return redirect()->back();
             }
-
-        return view("employeeList", ["employee" => $employee]);
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2){
+                return redirect()->back();
+            } else {
+                return view('employeeList', ['employee' => $employee]);
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**

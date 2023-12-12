@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\roles;
-use Illuminate\Support\Facades\DB;
 
 class roleControllerAPI extends Controller
 {
@@ -16,7 +17,15 @@ class roleControllerAPI extends Controller
     {
         $roles = roles::all();
 
-        return view("roles", ["roles" => $roles]);
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1){
+                return redirect()->back();
+            } else {
+                return view('roles', ["roles" => $roles]);
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
