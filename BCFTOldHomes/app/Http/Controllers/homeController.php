@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 session_start();
+$_SESSION["role"];
 
 use Illuminate\Http\Request;
 use App\Models\users;
-use Illuminate\Support\Facades\DB;
 
 class homeController extends Controller
 {
@@ -30,24 +30,63 @@ class homeController extends Controller
             return;
         }
 
-        if ($existingUser->roleID == 1){
-            return view('/adminDash');
+        if(isset($existingUser->roleID)){
+            $_SESSION['role'] = $existingUser->roleID;
         }
 
-        if ($existingUser->roleID == 2){
-            return view('/supervisorDash');
+        //Admin Dash
+        if (isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1){
+                return redirect()->back();
+            } else {
+                return view('adminDash');
+            }
+        } else {
+            return redirect()->back();
         }
 
-        if ($existingUser->roleID == 3){
-            return view('/doctorDash');
+        //Supervisor Dash
+        if (isset($_SESSION['role'])){
+            if($_SESSION['role'] != 2){
+                return redirect()->back();
+            } else {
+                return view('supervisorDash');
+            }
+        } else {
+            return redirect()->back();
         }
 
-        if ($existingUser->roleID == 4){
-            return view('/caregiversDashboard');
+        //Doctor Dashboard
+        if (isset($_SESSION['role'])){
+            if($_SESSION['role'] != 3){
+                return redirect()->back();
+            } else {
+                return view('doctorDash');
+            }
+        } else {
+            return redirect()->back();
         }
 
-        if ($existingUser->roleID == 5){
-            return view('/patientsDashboard');
-        } 
+        //Caregiver Dashboard
+        if (isset($_SESSION['role'])){
+            if($_SESSION['role'] != 4){
+                return redirect()->back();
+            } else {
+                return view('caregiversDashboard');
+            }
+        } else {
+            return redirect()->back();
+        }
+
+        //Patient Dashboard
+        if (isset($_SESSION['role'])){
+            if($_SESSION['role'] != 5){
+                return redirect()->back();
+            } else {
+                return view('patientsDashboard');
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 }
