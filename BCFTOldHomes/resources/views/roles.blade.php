@@ -44,21 +44,26 @@
                   @foreach($roles as $role)
                   <tr>
                     <td>{{ $role->roleName }}</td>
-                    <td>{{ $role->accessLevel }}</td>
+                    {{-- changed from accessLevel to roleID temporarily -Tanner --}}
+                    <td>{{ $role->roleID }}</td>
                   </tr>
                   @endforeach
                 </table>
                 </div>
             </div>
-            <div id="roleCreation">
-                <label for="createRole">Create New Role</label>
-                <input placeholder="create new role..." type="text" name="createRole" id="createRole">
-                <br>
-                <label for="accessLevel">Enter Access Level</label>
-                <input placeholder="enter access level..." type="int" name="accessLevel id="accessLevel">
-                <br>
-                <button type="submit">Create</button>
-            </div>
+            <form action="{{ url('/api/roles') }}" method="POST">
+                @csrf
+                <div id="roleCreation">
+                    <label for="createRole">Create Role</label>
+                    <input placeholder="enter role name..." type="text" name="roleName" id="roleName" required>
+                    <br>
+                    <label for="accessLevel">Access Level</label>
+                    <input placeholder="enter access level..." type="number" name="accessLevel" id="accessLevel" required>
+                    <br>
+                    <button type="submit">Create</button>
+                </div>
+            </form>
+
         </div>
             <!--Waves Container-->
             <div>
@@ -89,6 +94,14 @@
 
 
     </body>
+
+
+
+<script>
+
+</script>
+
+
 
 
 

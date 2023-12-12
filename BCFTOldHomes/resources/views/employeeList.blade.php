@@ -1,6 +1,14 @@
+<?php
+  if(isset($_POST['submit'])){
+    $employeesID = $request->input('employeeID');
+    $updatedSalary = $request->input('updatedSalary');
+
+    $pleaseWork = DB::update("update employees set salary = ? where employeeID = ?", [$updatedSalary, $employeesID]);
+  }
+?>
 <html>
     <head>
-
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     </head>
     <body>
       @csrf
@@ -34,12 +42,32 @@
             <h1>BCFT Retirement Home</h1>
             </div>
             <div class="box">
-                <h3>Welcome Doctor Smith</h3>
+                <h3>Welcome</h3>
                 <div class='box'>
                     <div>
                 </div>
+
                     <div>
-                        <table class="styled-table">
+                         <!-- Form to search for an employee -->
+                <form id="employeeSearchForm">
+                    @csrf
+                    <table class="styled-table">
+                        <tr>
+                            <th>Employee Search</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="employeeSearch" name="employeeSearch" placeholder="Employee ID">
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="searchButton">Submit</button>
+                </form>
+                <div id="employeeInfo">
+                    <!-- Display employee information dynamically using JavaScript -->
+                </div>
+                        {{-- <table class="styled-table">
                           <tr>
                           <th>Employee ID</th>
                           <th>Role ID</th>
@@ -52,7 +80,7 @@
                             <td>{{ $employees->salary }}</td>
                           </tr>
                           @endforeach
-                        </table>
+                        </table> --}}
                     </div>
                       <div>
                       <form action="{{ url('api/empList') }}" method="put">
@@ -64,7 +92,7 @@
                             </tr>
                             <tr>
                               <td>
-                                <input id="employeeID" name="employeeID" placeholder="Employee ID" required>
+                                <input id="employeeID" name="employeeID" placeholder="Employee ID">
                               </td>
                               <td>
                                 <input id="updatedSalary" name="updatedSalary" placeholder="Updated Salary" required>
@@ -105,7 +133,89 @@
 
     </body>
 
+    <script>
+$(document).ready(function() {
+        $("#searchButton").click(function() {
+            var employeeID = $("#employeeSearch").val();
 
+            $.ajax({
+                url: "{{ url('api/employees/show') }}",
+                type: "GET",
+                data: { "employeeSearch": employeeID },
+                success: function(response) {
+                    // Update the content with the employee information
+                    var employeeInfoHtml = "<table class='styled-table'>" +
+                        "<tr><th>Employee ID</th><th>Role</th><th>Salary</th></tr>";
+
+                    if (response.length > 0) {
+                        $.each(response, function(index, employee) {
+                            employeeInfoHtml += "<tr>" +
+                                "<td>" + employee.employeeID + "</td>" +
+                                "<td>" + employee.roleName + "</td>" +
+                                "<td>" + employee.salary + "</td>" +
+                                "</tr>";
+                        });
+                    } else {
+                        employeeInfoHtml += "<tr><td colspan='3'>No employee found</td></tr>";
+                    }
+
+                    employeeInfoHtml += "</table>";
+
+                    $("#employeeInfo").html(employeeInfoHtml);
+                },
+                error: function() {
+                    // Handle the error case
+                    $("#employeeInfo").html("<p>Error fetching employee information</p>");
+                }
+            });
+        });
+    });
+
+    // CODE FOR CLEARING THE PAGE ON REFRESH
+     // Use jQuery to clear the employee search input on page refresh
+     $(document).ready(function() {
+        // Get the value of the input on page load
+        var employeeSearchInput = $("#employeeSearch");
+
+        // Clear the input value
+        employeeSearchInput.val("");
+
+        // Add an event listener to clear the input when the page is refreshed
+        $(window).on("beforeunload", function() {
+            employeeSearchInput.val("");
+        });
+    });
+
+    // Use jQuery to clear the employee search input on page refresh
+    $(document).ready(function() {
+        // Get the value of the input on page load
+        var employeeUpdateInput = $("#updatedSalary");
+
+        // Clear the input value
+        employeeUpdateInput.val("");
+
+        // Add an event listener to clear the input when the page is refreshed
+        $(window).on("beforeunload", function() {
+            employeeUpdateInput.val("");
+        });
+    });
+
+    $(document).ready(function() {
+        // Get the value of the input on page load
+        var employeeIDInput = $("#employeeID");
+
+        // Clear the input value
+        employeeIDInput.val("");
+
+        // Add an event listener to clear the input when the page is refreshed
+        $(window).on("beforeunload", function() {
+            employeeIDInput.val("");
+        });
+    });
+
+
+
+    </script>
 
 
     <style>
@@ -403,6 +513,8 @@ input::placeholder {
     outline: 0;
     border: 0;
     cursor: pointer;
+    max-width: 123px;
+    margin-top: 12px;
     width: 20%;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
     will-change: box-shadow,transform;

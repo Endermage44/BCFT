@@ -30,12 +30,14 @@ Route::resource('registration', registerControllerAPI::class);
 
 //Employee Information Routes
 Route::resource('empList', employeesControllerAPI::class);
+Route::get('/employees/show', [employeesControllerAPI::class, 'show']);
 
 //Patient Information Routes
 Route::resource('patientInfo', patientControllerAPI::class);
 
 //Roles Routes
 Route::resource('roles', roleControllerAPI::class);
+
 
 //Registration Approval Routes
 Route::resource('regApproval', regApproveControlAPI::class);
