@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\DB;
