@@ -40,11 +40,6 @@ class Register extends Controller
         // Create a new User instance and save to the database
         $user = User::create($validatedData);
 
-        // Optionally, you can log the user in after registration
-        // auth()->login($user);
-
-        // Redirect to a success page or provide a success message
         return redirect()->route('success'); // Adjust the route accordingly
     }
-    //  THIS CODE SEEMS LIKE IT CAN WORK , Commented it to be safe , thought it could be a great start
 }
