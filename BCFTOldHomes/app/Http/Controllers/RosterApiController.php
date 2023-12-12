@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Roster;
+use App\Models\rosters;
 
 class RosterApiController extends Controller
 {
@@ -16,15 +16,14 @@ class RosterApiController extends Controller
      {
          $rosterDate = $request->input('rosterDate');
  
-         $rosterData = Roster::where('rosterDate', $rosterDate)->first();
+         $rosterData = rosters::where('rosterDate', $rosterDate)->first();
  
          return response()->json(['rosterData' => $rosterData]);
      }
 
     public function index()
     {
-      
-        
+        //
     }
 
     /**
