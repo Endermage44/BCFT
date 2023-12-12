@@ -1,6 +1,6 @@
 <html>
     <head>
-
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     </head>
     <body>
         <div class="header">
@@ -34,29 +34,32 @@
                 <div class="box">
                     <h3>Patients Page</h3>
                 {{-- the oninput thing in input tags gives me an idea for the Additional Info Patients Page I think it can be useful --}}
-                    <form id="patientsPageForm">
+                    <form action="{{ url('api/patientInfo/show') }}" id="patientsPageForm" method="GET">
                         <label for="searchPatientID">Search Patient ID:</label>
-                        <input type="text" id="searchPatientID" placeholder="Enter Patient ID" oninput="searchPatients()">
+                        <input type="text" id="searchPatientID" name="searchPatientID" placeholder="Enter Patient ID">
 
                         <label for="searchPatientName">Search Patient Name:</label>
-                        <input type="text" id="searchPatientName" placeholder="Enter Patient Name" oninput="searchPatients()">
+                        <input type="text" id="searchPatientName" name="searchPatientName" placeholder="Enter Patient Name">
 
                         <label for="searchPatientAge">Search Patient Age:</label>
-                        <input type="number" id="searchPatientAge" placeholder="Enter Patient Age" oninput="searchPatients()">
+                        <input type="number" id="searchPatientAge" name="searchPatientAge" placeholder="Enter Patient Age">
 
                         <label for="searchEmergencyContact">Search Emergency Contact:</label>
-                        <input type="text" id="searchEmergencyContact" placeholder="Enter Emergency Contact" oninput="searchPatients()">
+                        <input type="text" id="searchEmergencyContact" name="searchEmergencyContact" placeholder="Enter Emergency Contact">
 
                         <label for="searchEmergencyContactName">Search Emergency Contact Name:</label>
-                        <input type="text" id="searchEmergencyContactName" placeholder="Enter Emergency Contact Name" oninput="searchPatients()">
+                        <input type="text" id="searchEmergencyContactName" name="searchEmergencyContactName" placeholder="Enter Emergency Contact Name">
 
                         <label for="searchAdmissionDate">Search Admission Date:</label>
-                        <input type="date" id="searchAdmissionDate" oninput="searchPatients()">
+                        <input type="date" name="searchAdmissionDate" id="searchAdmissionDate">
+                        <br>
+                        <button type="submit">Search</button>
+                        <button type="button" id="clearButton">Clear</button>
 
                         <!-- Display patient information here based on search results -->
 
                     </form>
-                    <div>
+                    <div id="searchResults">
                       <table class="styled-table">
                         <tr>
                         <th>Patient ID</th>
@@ -69,7 +72,7 @@
                         @foreach($patients as $patient)
                         <tr>
                           <td>{{ $patient->patientID}}</td>
-                          <td>{{ $patient->firstName }}{{ $patient->lastName }}</td>
+                          <td>{{ $patient->firstName }} <br> {{ $patient->lastName }}</td>
                           <td>{{ $patient->age }}</td>
                           <td>{{ $patient->emergencyContactID }}</td>
                           <td>{{ $patient->emergencyContact }}</td>
@@ -81,39 +84,34 @@
 
 
 
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        function searchPatients() {
-                            const searchPatientID = document.getElementById('searchPatientID').value;
-                            const searchPatientName = document.getElementById('searchPatientName').value;
-                            const searchPatientAge = document.getElementById('searchPatientAge').value;
-                            const searchEmergencyContact = document.getElementById('searchEmergencyContact').value;
-                            const searchEmergencyContactName = document.getElementById('searchEmergencyContactName').value;
-                            const searchAdmissionDate = document.getElementById('searchAdmissionDate').value;
+        <script>
 
-                            // Simulate AJAX request to fetch patients based on search criteria
-                            const searchResults = [
-                                {
-                                    id: 'patient123',
-                                    name: 'John Doe',
-                                    age: 45,
-                                    emergencyContact: '123-456-7890',
-                                    emergencyContactName: 'Jane Doe',
-                                    admissionDate: '2023-12-01',
-                                },
-                                // Add more patient data as needed
-                            ];
+            // Function to clear input fields
+            function clearInputs() {
+                document.getElementById('searchPatientID').value = '';
+                document.getElementById('searchPatientName').value = '';
+                document.getElementById('searchPatientAge').value = '';
+                document.getElementById('searchEmergencyContact').value = '';
+                document.getElementById('searchEmergencyContactName').value = '';
+                document.getElementById('searchAdmissionDate').value = '';
+            }
 
-                            // Display patient information based on search results
-                            displaySearchResults(searchResults);
-                        }
+            // Function to clear search results
+             function clearResults() {
+                 document.getElementById('searchResults').innerHTML = '';
+            }
 
-                        function displaySearchResults(results) {
-                            // Implement logic to display search results in the UI
-                            // For example, update a table or list with the filtered patient information
-                        }
-                    });
-                </script>
+            // Function to clear both inputs and results
+                function clearAll() {
+                clearInputs();
+                clearResults();
+            }
+
+            // Attach the functions to the clear button
+                document.getElementById('clearButton').addEventListener('click', clearAll);
+
+
+        </script>
 
             </div>
             <!--Waves Container-->
@@ -233,6 +231,7 @@ body {
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
+    text-align: center;
 }
 
 .styled-table tbody tr {
@@ -241,6 +240,7 @@ body {
 
 .styled-table tbody tr:nth-of-type(even) {
     background-color: rgb(255, 255, 255, .8);
+    color: #333333;
 }
 
 .styled-table tbody tr:last-of-type {
@@ -328,7 +328,7 @@ button {
 }
 
 .inner-header {
-  height:20vh;
+  height:25vh;
   width:100%;
   margin: 0;
   padding: 0;
@@ -352,7 +352,7 @@ button {
 
 .content {
   position:relative;
-  height:20vh;
+  height:3.5vh;
   text-align:center;
   background-color: white;
 }
@@ -441,6 +441,7 @@ input::placeholder {
     display: inline-block;
     outline: 0;
     width:25%;
+    max-width: 123px;
     border: 0;
     cursor: pointer;
     transition: box-shadow 0.15s ease,transform 0.15s ease;
