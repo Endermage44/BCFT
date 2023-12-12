@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +17,13 @@ class PatientControllerAPI extends Controller
         $patients = DB::table('patients')
             ->join('users','patients.emailID','=','users.emailID')
             ->get();
-
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2 && $_SESSION['role'] != 3 && $_SESSION['role'] != 4){
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
         return view("patientInfo", ["patients" => $patients]);
     }
 

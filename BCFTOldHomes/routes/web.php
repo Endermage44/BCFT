@@ -36,30 +36,15 @@ Route::get('/familyLogin', function() {
 });
 
 //Doctor Dash
-Route::get('/docDash', function(){
-    return view('doctorDash');
-});
-
+Route::get('/docDash', [dashboardsController::class,'docDash']);
 //Admin Dashboard
-Route::get('/adminDash', function() {
-    return view('adminDash');
-});
-
+Route::get('/adminDash', [dashboardsController::class,'adminDash']);
 //Patients DashBoard
-Route::get('/patDashboard', function(){
-    return view('patientsDashboard');
-});
-
+Route::get('/patDashboard', [dashboardsController::class,'patientDash']);
 //Caregivers DashBoard
-Route::get('/careDashboard', function(){
-    return view('caregiversDashboard');
-});
-
+Route::get('/careDashboard', [dashboardsController::class,'careDash']);
 //Supervisor Dashboard
-Route::get('/supDashboard', function(){
-    return view('supervisorDash');
-});
-
+Route::get('/supDashboard', [dashboardsController::class, 'supervisorDash']);
 //Roster Page
 Route::get('/roster', [dashboardsController::class,'roster']);
 //Patient Additional Info Page
