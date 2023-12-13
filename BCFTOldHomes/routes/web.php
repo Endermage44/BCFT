@@ -42,7 +42,7 @@ Route::get('/adminDash', [dashboardsController::class,'adminDash']);
 //Patients DashBoard
 Route::get('/patDashboard', [dashboardsController::class,'patientDash']);
 //Caregivers DashBoard
-Route::get('/careDashboard', [dashboardsController::class,'careDash']);
+// Route::get('/careDashboard', [dashboardsController::class,'careDash']);
 //Supervisor Dashboard
 Route::get('/supDashboard', [dashboardsController::class, 'supervisorDash']);
 //Roster Page
