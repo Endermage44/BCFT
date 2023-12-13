@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 session_start();
-$_SESSION["role"];
+// $_SESSION["role"];
 
 use Illuminate\Http\Request;
 use App\Models\users;
