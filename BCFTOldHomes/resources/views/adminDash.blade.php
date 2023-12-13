@@ -36,7 +36,7 @@
                 <h3>Welcome Doctor Smith</h3>
                 <div class='box'>
                     <!-- Payments -->
-                    <form action={{ url('/payments') }}>
+                    <form action={{ url('/patientPayment') }}>
                         <button type='submit'>Payments</button>
                     </form>
 
@@ -71,12 +71,12 @@
                     </form>
 
                     <!-- Admin Report -->
-                    <form action={{ url('/adReport') }}>
+                    <form action={{ url('/api/adReports') }}>
                         <button type='submit'>Admin Report</button>
                     </form>
 
                     <!-- Registration Approval -->
-                    <form action={{ url('/regApprove') }}>
+                    <form action={{ url('/api/regApproval') }}>
                         <button type='submit'>Registration Approvals</button>
                     </form>
                 </div>

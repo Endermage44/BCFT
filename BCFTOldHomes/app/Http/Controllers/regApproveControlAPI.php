@@ -53,7 +53,7 @@ class regApproveControlAPI extends Controller
         }
 
         if(isset($_SESSION['role'])){
-            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2){
+            if($_SESSION['role'] === 1 or $_SESSION['role'] === 2){
                 return view('registrationApproval', ['approval' => $approval]);
             } else {
                 return redirect()->back();
