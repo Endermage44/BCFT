@@ -28,10 +28,10 @@ class dashboardsController extends Controller
     }
     public function doctorsHome(){
         if(isset($_SESSION["role"])){
-            if($_SESSION['role'] != 3){
-                return redirect()->back();
-            } else {
+            if($_SESSION['role'] === 3){
                 return view('doctorsHome');
+            } else {
+                return redirect()->back();
             }
         } else {
             return redirect()->back();
@@ -39,10 +39,10 @@ class dashboardsController extends Controller
     }
     public function patientsHome(){
         if(isset($_SESSION['role'])){
-            if($_SESSION['role'] != 5){
-                return redirect()->back();
-            } else {
+            if($_SESSION['role'] === 5){
                 return view('patientHome');
+            } else {
+                return redirect()->back();
             }
         } else {
             return redirect()->back();
@@ -63,10 +63,12 @@ class dashboardsController extends Controller
     }
     public function caregiversHome(){
         if(isset($_SESSION['role'])){
-            if($_SESSION['role'] != 4){
-                return redirect()->back();
-            } else {
+            if($_SESSION['role'] === 4){
                 return view('caregiversHome');
+
+            } else {
+                return redirect()->back();
+
             }
         } else {
             return redirect()->back();

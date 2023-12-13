@@ -34,59 +34,25 @@ class homeController extends Controller
             $_SESSION['role'] = $existingUser->roleID;
         }
 
-        //Admin Dash
         if (isset($_SESSION['role'])){
-            if($_SESSION['role'] != 1){
-                return redirect()->back();
-            } else {
+            if($_SESSION['role'] === 1){
                 return view('adminDash');
             }
-        } else {
-            return redirect()->back();
-        }
-
-        //Supervisor Dash
-        if (isset($_SESSION['role'])){
-            if($_SESSION['role'] != 2){
-                return redirect()->back();
-            } else {
+            elseif($_SESSION['role'] === 2){
                 return view('supervisorDash');
             }
-        } else {
-            return redirect()->back();
-        }
-
-        //Doctor Dashboard
-        if (isset($_SESSION['role'])){
-            if($_SESSION['role'] != 3){
-                return redirect()->back();
-            } else {
+            elseif($_SESSION['role'] === 3){
                 return view('doctorDash');
             }
-        } else {
-            return redirect()->back();
-        }
-
-        //Caregiver Dashboard
-        if (isset($_SESSION['role'])){
-            if($_SESSION['role'] != 4){
-                return redirect()->back();
-            } else {
+            elseif($_SESSION['role'] === 4){
                 return view('caregiversDashboard');
             }
-        } else {
-            return redirect()->back();
-        }
-
-        //Patient Dashboard
-        if (isset($_SESSION['role'])){
-            if($_SESSION['role'] != 5){
-                return redirect()->back();
-            } else {
+            elseif($_SESSION['role'] === 5){
                 return view('patientsDashboard');
             }
-        } else {
-            return redirect()->back();
-        }
+            else{
+                return redirect()->back();
+            }
     }
+}
 }
