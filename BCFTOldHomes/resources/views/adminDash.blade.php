@@ -46,7 +46,7 @@
                     </form>
 
                     <!-- Roles -->
-                    <form action={{ url('/roles') }}>
+                    <form action={{ url('/api/roles') }}>
                         <button type='submit'>Roles</button>
                     </form>
 
