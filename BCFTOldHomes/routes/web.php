@@ -56,7 +56,7 @@ Route::get('/patHome', [dashboardsController::class,'patientsHome']);
 //Doctors Appointments Page
 Route::get('/docAppt', [dashboardsController::class,'doctorAppointments']);
 //Admin Report Page
-Route::get('/adReport', [dashboardsController::class,'adminReport']);
+// Route::get('/adReport', [dashboardsController::class,'adminReport']);
 //Caregiver's Home Page
 Route::get('/careHome', [dashboardsController::class,'caregiversHome']);
 //Patient of Doctor Page

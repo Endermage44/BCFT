@@ -17,10 +17,10 @@ class dashboardsController extends Controller
     }
     public function addInfoPatient(){
         if(isset($_SESSION['role'])){
-            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2){
-                return redirect()->back();
-            } else {
+            if($_SESSION['role'] === 1 or $_SESSION['role'] === 2){
                 return view("additionalInfoPatient");
+            } else {
+                return redirect()->back();
             }
         } else {
             return redirect()->back();
@@ -49,11 +49,13 @@ class dashboardsController extends Controller
         }
     }
     public function doctorAppointments(){
-        if(isset($SESSION['role'])){
-            if($_SESSION['role'] != 1 && $_SESSION['role'] != 2){
-                return redirect()->back();
-            } else {
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] === 1 or $_SESSION['role'] === 2){
+                // return 'access';
                 return view('docAppointments');
+            } else {
+                // return 'no';
+                return redirect()->back(); 
             }
         } else {
             return redirect()->back();
