@@ -52,3 +52,7 @@ Route::post('/roster/getRosterData', [RosterApiController::class, 'getRosterData
 
 //Admin Report Routes
 Route::resource('adReports', adReportControllerAPI::class);
+//Roster Routes
+Route::post('/roster/getRosterData', [RosterApiController::class, 'getRosterData'])->name('api.roster.getRosterData');
+//This route is needed for the Rosters to work
+

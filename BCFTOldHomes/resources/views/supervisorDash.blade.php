@@ -50,10 +50,15 @@
                         <button type='submit'>Employee List</button>
                     </form>
 
-                    <!-- Rosters (View/Edit) -->
+                    <!-- Rosters (View) -->
                     <form action={{ url('/roster') }}>
-                        <button type='submit'>Add/View Rosters</button>
+                        <button type='submit'>View Rosters</button>
                     </form>
+
+                       {{-- Add new Roster --}}
+                       <form action={{url('/newRoster')}}>
+                        <button type = 'submit'>Add New Roster</button>
+                      </form>
 
                     <!-- Patient Info -->
                     <form action={{ url('/api/patientInfo') }}>

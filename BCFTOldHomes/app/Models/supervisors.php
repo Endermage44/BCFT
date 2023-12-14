@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class supervisors extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'supervisorID',
         'employeeID',
         'emailID',
-        'roleID'
+        'roleID',
     ];
+    protected $primaryKey = 'supervisorID';
+
+    // Define relationships if not already done
+    
+
+    // Other relationships...
 }
+

@@ -140,4 +140,8 @@ class dashboardsController extends Controller
             return redirect()->back();
         }
     }
+
+    public function newRoster(){
+        return view("newRoster");
+    }
 }
