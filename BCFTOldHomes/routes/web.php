@@ -47,6 +47,14 @@ Route::get('/patDashboard', [dashboardsController::class,'patientDash']);
 Route::get('/supDashboard', [dashboardsController::class, 'supervisorDash']);
 //Roster Page
 Route::get('/roster', [dashboardsController::class,'roster']);
+
+//New Roster Page
+Route::get('/newRoster',[dashboardsController::class,'newRoster']);
+//Display Form for new Roster
+Route::get('/newRoster', [RosterApiController::class, 'create'])->name('roster.create');
+//Handles the form submission of the new Roster
+Route::post('/newRoster', [RosterApiController::class, 'store'])->name('roster.store');
+
 //Patient Additional Info Page
 Route::get('/patAdInfo', [dashboardsController::class,'addInfoPatient']);
 //Doctors Home Page

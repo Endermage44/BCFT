@@ -37,84 +37,108 @@
             </svg>
             <h1>BCFT Retirement Home</h1>
         </div>
-
-   
-     <!-- Roster Page -->
-<div class="roster-container">
-    <h2>Roster Page</h2>
-    <form method="post" action="{{ route('api.roster.getRosterData') }}">
-        @csrf
-        <label for="rosterDate">Select Date:</label>
-        <input type="date" name="rosterDate" id="rosterDate" onchange="fetchRosterData()">
-    </form>
-    <div id="rosterOutput">
-        <!-- Roster table will be displayed here -->
-    </div>
-</div>
-
-<!-- JavaScript -->
-<script>
-    function fetchRosterData() {
-        var rosterDate = document.getElementById('rosterDate').value;
-
-        // Make an asynchronous request to the API endpoint
-        fetch("{{ route('api.roster.getRosterData') }}", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            },
-            body: JSON.stringify({ rosterDate: rosterDate })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the retrieved data and update the UI
-            console.log(data);
-
-            // Update the roster details in the output div
-            updateRosterDetails(data.rosterData);
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function updateRosterDetails(rosterData) {
-    var rosterOutput = document.getElementById('rosterOutput');
-
-    if (rosterData) {
-        // Update the HTML with the new roster details
-        rosterOutput.innerHTML = `
-            <h3>Roster Details for ${rosterData.rosterDate}</h3>
-            <div class="roster-details">
-                <div class="roster-item">
-                    <p>Supervisor:</p>
-                    <p>${rosterData.supervisor}</p>
+        <!-- New Roster Container Section -->
+        <div class="new-roster-container">
+            <h2>New Roster Page</h2>
+            <form action="{{ route('roster.store') }}"  method="POST" id="newRosterForm" onsubmit="submitNewRoster(event);> 
+                @csrf
+        
+                <label for="newRosterDate">Select Date:</label>
+                <input type="date" id="newRosterDate" name="rosterDate" required>
+        
+                <!-- Table-like structure for supervisors, doctors, caregivers -->
+                <div class="roster-table">
+                    <div>
+                        <label for="supervisor">Supervisor:</label>
+                        <select id="supervisor" name="supervisor" required>
+                            <option value="" disabled selected>Select Supervisor</option>
+                            @foreach ($supervisors as $supervisor)
+                                <option value="{{ $supervisor->supervisorID }}">{{ $supervisor->emailID }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="doctor">Doctor:</label>
+                        <select id="doctor" name="doctor" required>
+                            <option value="" disabled selected>Select Doctor</option>
+                            @foreach ($doctors as $doctor)
+                                <option value="{{ $doctor->doctorID }}">{{ $doctor->emailID }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="caregiver1">Caregiver 1:</label>
+                        <select id="caregiver1" name="caregiver1" required>
+                            <option value="" disabled selected>Select Caregiver 1</option>
+                            @foreach ($caregivers as $caregiver)
+                                <option value="{{ $caregiver->caregiverID }}">{{ $caregiver->emailID }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="caregiver2">Caregiver 2:</label>
+                        <select id="caregiver2" name="caregiver2" required>
+                            <option value="" disabled selected>Select Caregiver 2</option>
+                            @foreach ($caregivers as $caregiver)
+                                <option value="{{ $caregiver->caregiverID }}">{{ $caregiver->emailID }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="caregiver3">Caregiver 3:</label>
+                        <select id="caregiver3" name="caregiver3" required>
+                            <option value="" disabled selected>Select Caregiver 3</option>
+                            @foreach ($caregivers as $caregiver)
+                                <option value="{{ $caregiver->caregiverID }}">{{ $caregiver->emailID }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="caregiver4">Caregiver 4:</label>
+                        <select id="caregiver4" name="caregiver4" required>
+                            <option value="" disabled selected>Select Caregiver 4</option>
+                            @foreach ($caregivers as $caregiver)
+                                <option value="{{ $caregiver->caregiverID }}">{{ $caregiver->emailID }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <div class="roster-item">
-                    <p>Doctor:</p>
-                    <p>${rosterData.doctor}</p>
-                </div>
-                <div class="roster-item">
-                    <p>Caregiver 1:</p>
-                    <p>${rosterData.caregiver1}</p>
-                </div>
-                <div class="roster-item">
-                    <p>Caregiver 2:</p>
-                    <p>${rosterData.caregiver2}</p>
-                </div>
-                <div class="roster-item">
-                    <p>Caregiver 3:</p>
-                    <p>${rosterData.caregiver3}</p>
-                </div>
-                <div class="roster-item">
-                    <p>Caregiver 4:</p>
-                    <p>${rosterData.caregiver4}</p>
-                </div>
-            </div>
-        `;
-    }
-}
-</script>
+        
+                <button type="submit">OK</button>
+            </form>
+        </div>
+        
+ 
+        <script>
+            function submitNewRoster(event) {
+                event.preventDefault();
+                var newRosterForm = document.getElementById('newRosterForm');
 
+                // Make an asynchronous request to the API endpoint
+                fetch("{{ route('roster.store') }}", {
+                 method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                  },
+                        body: JSON.stringify({
+                            rosterDate: newRosterForm.rosterDate.value,
+                            supervisor: parseInt(newRosterForm.supervisor.value),
+                            doctor: parseInt(newRosterForm.doctor.value),
+                            caregiver1: parseInt(newRosterForm.caregiver1.value),
+                            caregiver2: parseInt(newRosterForm.caregiver2.value),
+                            caregiver3: parseInt(newRosterForm.caregiver3.value),
+                            caregiver4: parseInt(newRosterForm.caregiver4.value)
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        // Handle the response data as needed
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        </script>
      
         <!-- Waves Container -->
         <div>

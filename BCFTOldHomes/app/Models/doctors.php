@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class doctors extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         "doctorID",
-        "emailID",
         "employeeID",
+        "emailID" ,
         "roleID"
     ];
+
+    protected $primaryKey = 'doctorID';
+
 }

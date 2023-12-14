@@ -14,4 +14,5 @@ class caregivers extends Model
         "emailID",
         "roleID"
     ];
+    protected $primaryKey = 'caregiverID';
 }
